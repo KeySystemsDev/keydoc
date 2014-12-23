@@ -1,0 +1,20 @@
+@font-face {
+	font-family: "lobster"; 
+	src: url(fonts/Lobster_1.3.ttf) format("truetype"); 
+} 
+
+.bg-sesion{
+  background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.mn-vertical{
+  font-size: 14px;
+  font-weight: bold;
+}
+.seccion{
+	font-family: "lobster"; 
+	font-size: 18px;
+}

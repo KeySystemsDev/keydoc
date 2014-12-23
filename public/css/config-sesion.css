@@ -1,0 +1,28 @@
+@import url("config-complexify.css");
+
+body { 
+  font-family: tahoma;
+  background: url(../img/sesion/bg-sesion.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-sesion{
+  background: url(../img/sesion/movil.png) no-repeat center center fixed; 
+}
+.panel-default {
+	opacity: 0.9;
+	margin-top:100px;
+}
+.form-group.last { 
+	margin-bottom:0px; 
+}
+form .counter{
+  color:#848484;
+  font-size:10px;
+  font-weight:bold;
+  position:absolute;
+  right:17;
+  top:-15;
+}

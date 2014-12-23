@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+ 
+    # /application
+     
+    RewriteEngine On
+    RewriteBase /ks/keydoc/
+ 
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /ks/keydoc/index.php?/$1 [L]
+ 
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /ks/keydoc/index.php?/$1 [L]
+ 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /ks/keydoc/index.php?/$1 [L]
+ 
+	##### rewrite exceptions
+    RewriteCond $1 !^(index.php|css|js|img|public|robots.txt)
+    RewriteRule ^(.*)$ /ks/keydoc/index.php/$1 [L]
+ 
+</IfModule>
+ 
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /ks/keydoc/index.php
+</IfModule>

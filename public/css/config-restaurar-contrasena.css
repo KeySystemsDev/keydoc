@@ -1,0 +1,10 @@
+body{
+  background: url(../img/sesion/back.png);
+  background-color: #444;
+  background: url(../img/sesion/pinlayer2.png),
+              url(../img/sesion/pinlayer1.png),
+              url(../img/sesion/back.png);    
+}
+.vertical-offset-100{
+  padding-top:100px;
+}
