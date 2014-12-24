@@ -4,3 +4,4 @@
 # base de datos
 _aplicacion/
 _permisologia/
+*.php-tmp

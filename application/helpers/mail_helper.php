@@ -11,10 +11,6 @@ if (! function_exists('registro'))
 				<head> 
 			   		<title>Activación</title> 
 					<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-					<link rel="stylesheet" type="text/css" href="http://keypanelservices.com/html_mail/bootstrap-3.3.1/css/bootstrap-theme.min.css"/>
-					<link rel="stylesheet" type="text/css" href="http://keypanelservices.com/html_mail/bootstrap-3.3.1/css/bootstrap.min.css"/>
-					<script type="text/javascript" src="http://keypanelservices.com/html_mail/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-					<script type="text/javascript" src="http://keypanelservices.com/html_mail/bootstrap-3.3.1/js/bootstrap.min.js"></script>
 				</head>			 
 				<body style="font-family: century gothic; font-size: 14px;">
 					<div class="col-md-12">
