@@ -5,3 +5,5 @@
 _aplicacion/
 _permisologia/
 *.php-tmp
+application/config/config.php
+application/config/database.php

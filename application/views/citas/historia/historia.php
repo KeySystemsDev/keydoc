@@ -1,10 +1,15 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#buscar').click(function(event) {
+			$('#i_cedula').caracteres('veVE0123456789');
 			cedula = $('#i_cedula').val();
 			cedula = transformar.base64_encode(cedula);
-			
-			$(location).attr('href', '<?php echo base_url()?>citas/historia/paciente-' + cedula);
+			a = validar.cedula(cedula);
+			if (a != 0) {
+				$(location).attr('href', '<?php echo base_url()?>citas/historia/paciente-' + cedula);
+			}else{
+				ajax.mensaje('error', 'Debe ingresar una cedula válida', 'error');
+			}
 		});
 	});
 </script>
@@ -18,12 +23,6 @@
         <div class="box box-primary">
             <form id="form" role="form">
                 <div class="box-body">
-                    <div class="input-group my-colorpicker2">                                            
-                        <input type="text" class="form-control"/>
-                        <div class="input-group-addon">
-                            <button type="button" id="buscar" class="btn btn-primary">Buscar</button>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="i_cedula">Cédula</label>
                         <input type="text" class="form-control" id="i_cedula" name="i_cedula" placeholder="Ingrese cédula del paciente">
@@ -38,14 +37,11 @@
             </div>
         </div> 
     </div>
- 	<input type="text" id="i_cedula">
-	<button type="button"class="btn btn-default" id="buscar"> buscar </button>
-
-	<a href="<?php echo base_url().'citas/historia/paciente-'.base64_encode('v19310632'); ?>"> cedula </a>
 
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="box">
+			<p align="center"><b>Pacientes</b></p>
+			<div class="box">				
 				<div class="box-body table-responsive no-padding">
 					<table class="table table-hover">
 						<tr>

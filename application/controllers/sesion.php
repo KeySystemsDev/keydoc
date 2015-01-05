@@ -11,8 +11,8 @@ class Sesion extends CI_Controller{
 		$this->url = $_SERVER['REQUEST_URI'];
 		$this->str = explode('/', $this->url);
 
-		//$this->num = 4;  // localhost
-		$this->num = 2;  // server
+		$this->num = 4;  // localhost
+		//$this->num = 2;  // server
 		
 		$this->str = (isset($this->str[$this->num])) ? $this->str[$this->num] : '';
 		if ($this->str != 'desconectar') {

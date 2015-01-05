@@ -14,10 +14,10 @@
 | path to your installation.
 |
 |
-|	'http://keysystems.com.ve/proyectos/keydoc/';
+|	'http://keysystems.com.ve/proyectos/keydoc/'; 
 */
 
-$config['base_url']	= 'http://192.168.0.101/ks/keydoc/';
+$config['base_url']	= 'http://localhost/ks/keydoc/';
 
 /*
 |--------------------------------------------------------------------------
