@@ -7,3 +7,4 @@ _permisologia/
 *.php-tmp
 application/config/config.php
 application/config/database.php
+*.php;
