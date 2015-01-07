@@ -345,18 +345,20 @@ class Citas extends CI_Controller{
             **/
             $cedula  = decodificar($url_1);
             $cita    = decodificar($url_2);
+
             $this->layout->view('historia/historia_formulario', compact('menu', 'sub_menu'));
         }elseif ($url_1 != null){
             /**
             * Pacientes filtrados por el consultorio seleccionado
             **/
-            echo $url = $url_1;
+           	$url = $url_1;
             $arreglo = array(               
                 'id_usuario_doctor' => $this->id_usuario,
                 'cedula_perfil'     => decodificar($url_1)                       
             );
             $historial = $this->t_cita_model->consulta_paciente_por_cedula($arreglo);
-            //$this->layout->view('historia/historia_paciente', compact('menu', 'sub_menu', 'historial', 'url')); 
+            $paciente  = $this->t_cita_model->consulta_paciente_por_cedula($arreglo);
+            $this->layout->view('historia/historia_paciente', compact('menu', 'sub_menu', 'historial', 'paciente', 'url')); 
         }else{
             /**
             * Aparecen todos los pacientes del doctor

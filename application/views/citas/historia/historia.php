@@ -1,14 +1,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#buscar').click(function(event) {
-			$('#i_cedula').caracteres('veVE0123456789');
+		$('#i_cedula').caracteres('veVE0123456789');
+		$('#buscar').click(function(event) {			
 			cedula = $('#i_cedula').val();
-			cedula = transformar.base64_encode(cedula);
-			a = validar.cedula(cedula);
+			cedula_base64 = transformar.base64_encode(cedula);
+			a = validar.cedula('i_cedula');
 			if (a != 0) {
-				$(location).attr('href', '<?php echo base_url()?>citas/historia/paciente-' + cedula);
+				$(location).attr('href', '<?php echo base_url()?>citas/historia/paciente-' + cedula_base64);
 			}else{
-				ajax.mensaje('error', 'Debe ingresar una cedula válida', 'error');
+				ajax.mensaje('msj', 'Debe ingresar una cedula válida', 'error');
 			}
 		});
 	});
@@ -25,7 +25,7 @@
                 <div class="box-body">
                     <div class="form-group">
                         <label for="i_cedula">Cédula</label>
-                        <input type="text" class="form-control" id="i_cedula" name="i_cedula" placeholder="Ingrese cédula del paciente">
+                        <input type="text" class="form-control" id="i_cedula" name="i_cedula" maxlength="9" placeholder="Ingrese cédula del paciente">
                     </div>           
                 </div>
                 <div class="box-footer">

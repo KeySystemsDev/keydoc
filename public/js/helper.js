@@ -101,12 +101,12 @@
 			  return cedula;
 		  }else{
 			  $('#' + div).css({'border-left':'3px solid #FF8484'});
-			  $('#' + div).val('').attr('placeholder', 'Cédula incorrecta');
+			  $('#' + div).val('').attr('placeholder', 'Ingresar Cédula');
 			  return 0;
 		  }
 		}else{
 		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Cédula sin formato');
+		    $('#' + div).val('').attr('placeholder', 'Ingresar Cédula');
 		    return 0;
 		}
 	  }, 
