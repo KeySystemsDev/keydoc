@@ -418,8 +418,6 @@ class T_cita_model extends CI_Model {
 		return $query;
 	}
 
-	
-
 	public function consulta_monto_cita($arreglo = array()){
 		$this->accion   = 'monto_cita';
 		$this->id_cita  = $arreglo['id_cita'];
