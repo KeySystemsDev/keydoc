@@ -2,7 +2,6 @@
 	<div class="container">
 		<div class="intro-text">
 			<div class="intro-lead-in">Bienvenido a una nueva era de los médicos!</div>
-			<div class="intro-heading">KEYDOC</div>
 			<a href="<?php base_url()?>agendar" class="page-scroll btn btn-xl">Comenzar</a>
 		</div>
 	</div>
@@ -260,7 +259,7 @@
 			</div>
 	</div>
 </aside>
--->
+
 <section id="contact">
 	<div class="container">
 		<div class="row">
@@ -304,14 +303,14 @@
 		</div>
 	</div>
 </section>
-<!--
+-->
 <footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<span class="copyright">Copyright &copy; Key Doc 2014</span>
+				<span class="copyright">Copyright &copy; Key Doc <?php echo date('Y') ?></span>
 			</div>
-			<div class="col-md-4">
+			<!--<div class="col-md-4">
 				<ul class="list-inline social-buttons">
 					<li><a href="#"><i class="fa fa-twitter"></i></a>
 					</li>
@@ -328,10 +327,10 @@
 					<li><a href="#">Terms of Use</a>
 					</li>
 				</ul>
-			</div>
+			</div>-->
 		</div>
 	</div>
-</footer>-->
+</footer>
 
 <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-content">
@@ -376,7 +375,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="modal-body">
 						<h2>Médico</h2>						
-						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.png" alt="">
+						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor.png" alt="">
 						<!--<p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p>
 						<p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>-->
 						<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
@@ -400,7 +399,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="modal-body">
 						<h2>Recepción</h2>
-						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor.png" alt="">
+						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.png" alt="">
 						<!--<p>Treehouse is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
 						<p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.</p>-->
 						<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>

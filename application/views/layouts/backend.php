@@ -403,7 +403,7 @@
 			</aside>
 			<aside class="right-side">
 				<?php 
-					echo $content_for_layout;    
+					echo $content_for_layout; 				   
 				?>         
 			</aside>
 		</div>

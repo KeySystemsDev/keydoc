@@ -25,7 +25,7 @@ class Citas extends CI_Controller{
 			*Consultamos el perfil del usuario
 			**/	
 			$perfil = array(
-				'id_usuario' 		=> $this->id_usuario,
+				'id_usuario'    => $this->id_usuario,
 				'id_aplicacion' => $this->id_aplicacion 
 			);
 			$this->datos_perfil   = $this->t_perfil_model->consultar_perfil($perfil);			
@@ -87,7 +87,12 @@ class Citas extends CI_Controller{
 			);			
 			$cita_actual = $this->t_cita_model->agregar_cita($arreglo);
 			foreach ($cita_actual as $key) {
-				if (isset($key->doctor)) {
+				if (isset($key->doctor)) {				
+					/**
+					* enviando el correo electronico de que ha sido agendada una cita.
+					**/
+					$mensaje = 'Un paciente ha reservado una cita con Ud. Por lo que le invitamos a visitar la aplicación y ver el detalle de la misma.'; 
+					notificacion($correo, $mensaje);
 					$this->layout->view('menu', 'sub_menu', 'agendar/agendar_mensaje_envio', compact('arreglo'));
 				} else {
 					$this->layout->view('menu', 'sub_menu', 'agendar/agendar_mensaje_cita_error', compact('arreglo'));

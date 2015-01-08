@@ -58,10 +58,10 @@
 						</li>
 						<!--<li>
 						  	<a class="page-scroll" href="#team">Colaboradores</a>
-						</li>-->
+						</li>
 						<li>
 						  	<a class="page-scroll" href="#contact">Empresarial</a>
-						</li>
+						</li>-->
 				  	</ul>
 				</div>
 		  	</div>
