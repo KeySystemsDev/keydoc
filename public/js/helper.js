@@ -320,7 +320,8 @@
 		* animacion cuando se envia una peticion
 		**/         
 		before: function(div, img){
-			$(div).html('<p align="center"><img src="'+ img +'" style="margin: 5% auto; width: 20px;"></p>');
+			$(div).show();
+			$(div).html('<p align="center"><img src="'+ img +'" style="position:absolute; z-index: 99999; top: 300px; left: 40%;"></p>');
 		},
 		/**
 		* notificacion por una cantidad limitada de segundos
@@ -328,7 +329,7 @@
 		notificacion: function (div, milisegundos){
 			$('#' + div).slideDown();
 			setTimeout(function(){
-			$('#' + div).slideUp();
+				$('#' + div).slideUp();
 			}, milisegundos);
 	  	},
 	  	/**
@@ -344,7 +345,7 @@
 			    $('#' + div).html('<h4><span class="label label-info"><strong>Información:</strong> '+ msj +'</span></h4>');
 			}
 			setTimeout(function(){          
-			    $('#' + div).html(original);
+			    //$('#' + div).html(original);
 			}, 5000);
 	  	},
 	  	/**
@@ -475,13 +476,13 @@
 		}, 
 
 		strtolower: function (str) {
-		  //  discuss at: http://phpjs.org/functions/strtolower/
-		  // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-		  // improved by: Onno Marsman
-		  //   example 1: strtolower('Kevin van Zonneveld');
-		  //   returns 1: 'kevin van zonneveld'
+		  	//  discuss at: http://phpjs.org/functions/strtolower/
+		  	// original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+		  	// improved by: Onno Marsman
+		  	//   example 1: strtolower('Kevin van Zonneveld');
+		  	//   returns 1: 'kevin van zonneveld'
 
-		  return (str + '')
+		  	return (str + '')
 			.toLowerCase();
 		},
 

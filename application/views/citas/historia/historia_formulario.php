@@ -8,6 +8,13 @@
 		  	$('#i_monto_total').val(transformar.number_format(monto_total, 2, ',', '.'));
 		});	
 
+		$('#prueba').click(function(event) {
+			
+			ajax.before('#ajax-carga', '<?php echo base_url()?>public/img/ajax.gif');
+			setTimeout(function(){
+				$('#ajax-carga').hide();
+			}, 5000);
+		});
 		$('#b_enviar').click(function(event) { 
 
 			a = validar.string('i_observacion_publica');
@@ -15,14 +22,19 @@
 		
 			if(a != 0 && b != 0){               
 				datos = $('#form').serialize();
-				alert(datos);
 				$.ajax({
 					type: 'POST',
 					url: '<?php echo base_url()?>citas/historia_agregar',
 					data: datos,
+					beforeSend: function(){
+						ajax.before('#ajax-carga', '<?php echo base_url()?>public/img/ajax.gif');
+					},
 					success: function (data) {
-						$('#b_enviar').attr('disabled', 'true');						
-						ajax.mensaje('msj','Aun debe completar todos los campos', 'success');    
+						setTimeout(function(){
+							$('#b_enviar, #ajax-carga').hide();						
+							ajax.mensaje('msj','El registro se ha realizado satisfactoriamente', 'success');    
+						}, 2000);
+
 					},
 				});
 			}else{
@@ -73,6 +85,7 @@
 			</div>
 
 			<button type="button" id="b_enviar">Registrar</button>
+			<button type="button" id="prueba">Prueba</button>
 		</form>	
 	</div>
 </section>
