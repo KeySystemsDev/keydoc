@@ -311,26 +311,6 @@ class Citas extends CI_Controller{
 		}
 	}
 
-	public function citados_agregar_observacion(){			
-		/**
-		* Se agrega la observacion del citado
-		**/
-		if ($this->input->post()){
-			$arreglo = array(
-				'observacion_publica' 	   => $this->input->post("i_observacion_publica"),
-				'observacion_privada' 	   => $this->input->post("i_observacion_privada"),
-				'costo_consulta_adicional' => $this->input->post("i_costo_adicional"),
-				'costo_consulta_total' 	   => $this->input->post("i_costo_total"),
-				'costo_minimo' 			   => $this->input->post("i_costo_minimo"),
-				'id_cita' 				   => $this->input->post("id_cita"),
-				'id_consultorio' 		   => $this->input->post("id_consultorio"),
-				'id_paciente' 			   => $this->input->post("id_paciente")						
-			);
-			$this->t_detalle_observacion_model->insertar_observacion($arreglo);	
-			redirect(base_url().'citas/citados/consultorio-'.$arreglo['id_consultorio'].'/paciente-'.$arreglo['id_paciente'], 'refresh');		
-		}	
-	}
-
     public function historia($url_1 = null, $url_2 = null){
         $this->layout->setTitle('.: Atender Paciente :.');           
         $menu     = $this->menu;
@@ -345,8 +325,11 @@ class Citas extends CI_Controller{
             **/
             $cedula  = decodificar($url_1);
             $cita    = decodificar($url_2);
-
-            $this->layout->view('historia/historia_formulario', compact('menu', 'sub_menu'));
+            $arreglo = array(               
+                'id_cita' => decodificar($url_2),                      
+            );
+            $historia = $this->t_cita_model->consulta_monto_cita($arreglo);
+            $this->layout->view('historia/historia_formulario', compact('menu', 'sub_menu', 'historia'));
         }elseif ($url_1 != null){
             /**
             * Pacientes filtrados por el consultorio seleccionado
@@ -368,7 +351,22 @@ class Citas extends CI_Controller{
             );
             $pacientes    = $this->t_cita_model->consulta_todos_los_citados($arreglo);                        
             $this->layout->view('historia/historia', compact('menu', 'sub_menu', 'pacientes')); 
-        }        
-        
+        }                
     }
+
+	public function historia_agregar(){			
+		/**
+		* Se agrega la observacion del paciente atendido
+		**/
+		if ($this->input->post()){
+			$arreglo = array(
+				'id_cita' 	               => $this->input->post("id_cita"),
+				'observacion_privada'      => $this->input->post("i_observacion_privada"),
+				'observacion_publica'      => $this->input->post("i_observacion_publica"),
+				'costo_consulta_adicional' => $this->input->post("i_monto_adicional"),
+				'costo_consulta_total' 	   => $this->input->post("i_monto_total"),				
+			);
+			$this->t_detalle_observacion_model->insertar_observacion($arreglo);				
+		}	
+	}
 }

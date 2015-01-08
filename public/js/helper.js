@@ -11,423 +11,365 @@
 
 !function ($) {
 
-  $(function(){    
-	validar = { 
-	  /****************************************************
-		VALIDA QUE EL CAMPO SEA LÓGICO
-		UTILIZADO MAYORMENTE EN LOS SELECT E IMPUT TIPO
-		HIDDEN
-	  
-	  
-	  ****************************************************/
-	  logico: function (div, aux) {
-		logico = $('#' + div).val();
-		if(logico != ''){
-		  $('#' + aux).css({'border-left':'1px solid #CCCCCC'});
-		  return logico;
-		}else{
-		  $('#' + aux).css({'border-left':'3px solid #FF8484'});
-		  return 0;
-		}
-	  },      
-	  /****************************************************
-		VALIDA UNA CONTRASEÑA, QUE SEA MAYOR A 8
-		CARACTERES Y MENOR A 15 CARACTERES.
-				   
-	  
-	  
-	  ****************************************************/
-	  password: function (div) {
-		password = $('#' + div).val();
-		if(password.length >= 8 && password.length <= 15 ){
-			$('#' + div).css({'border-left':'1px solid #CCCCCC'});
-			return password;
-		}else{
-		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Contraseña corta e insegura');
-		    return 0;
-		}
-	  },     
-	  /****************************************************
-		VALIDA UN STRING O UNA CADENA DE CARACTERES
-	  
-				   
-	  
-	  
-	  ****************************************************/
-	  string: function (div) {
-		string = $('#' + div).val();
-		if(string.length >= 2){
-			$('#' + div).css({'border-left':'1px solid #CCCCCC'});
-			return string;
-		}else{
+  	$(function(){    
+		validar = { 
+		/**
+		* validar campo logico, select o numeros
+		**/
+	  	logico: function (div, aux) {
+			logico = $('#' + div).val();
+			if(logico != ''){
+			  	$('#' + aux).css({'border-left':'1px solid #CCCCCC'});
+			  	return logico;
+			}else{
+			  	$('#' + aux).css({'border-left':'3px solid #FF8484'});
+			  	return 0;
+			}
+	  	},      
+	  	/**
+		* validar las contraseñas que sean mayores a 8 y menores
+		* a 15 digitos
+		**/
+	  	password: function (div) {
+			password = $('#' + div).val();
+			placeholder = $('#' + div).attr('placeholder');
+			if(password.length >= 8 && password.length <= 15 ){
+				$('#' + div).css({'border-left':'1px solid #CCCCCC'});
+				return password;
+			}else{
+			    $('#' + div).css({'border-left':'3px solid #FF8484'});
+			    $('#' + div).val('').attr('placeholder', placeholder);
+			    return 0;
+			}
+	  	},     
+	  	/**
+		* valida que la cadena tenga caracteres
+		**/
+	  	string: function (div) {
+			string = $('#' + div).val();
+			placeholder = $('#' + div).attr('placeholder');
+			if(string.length >= 2){
+				$('#' + div).css({'border-left':'1px solid #CCCCCC'});
+				return string;
+			}else{
+				$('#' + div).css({'border-left':'3px solid #FF8484'});
+				$('#' + div).val('').attr('placeholder', placeholder);
+			    return 0;
+			}
+	  	},
+	  	/**
+		* valida que el campo tenga solo texto.
+		**/     
+	  	texto: function(div) {
+			texto = $('#' + div).val();
+			for(i = 0; i < texto.length; i++){
+			    if (texto.indexOf(texto.charAt(i),0) != -1){
+				    return 1;
+			  	}
+			}
 			$('#' + div).css({'border-left':'3px solid #FF8484'});
-			$('#' + div).val('').attr('placeholder', 'Texto muy corto');
-		    return 0;
-		}
-	  },
-	  /****************************************************
-		VALIDA QUE EL CAMPO CONTENGA SOLO TEXTO
-	  
-				   
-	  
-	  
-	  ****************************************************/      
-	  texto: function(div) {
-		texto = $('#' + div).val();
-		for(i = 0; i < texto.length; i++){
-		    if (texto.indexOf(texto.charAt(i),0) != -1){
+			return 0;        
+	  	},   
+	  	/**
+		* valida el campo de la cedula de identidad 
+		* venezolana
+		**/
+	  	cedula: function (div) {
+			cedula = $('#' + div).val();
+			placeholder = $('#' + div).attr('placeholder');
+			numero = cedula.substr(1,9);
+			letra = cedula.split("",1);
+			if (letra == 'v' || letra == 'e' 
+			 || letra == 'V' || letra == 'E'){
+			  	if((cedula.length >= 4) && (cedula.length <= 9)){
+				  	$('#' + div).css({'border-left':'1px solid #CCCCCC'});
+				  	return cedula;
+			  	}else{
+				  	$('#' + div).css({'border-left':'3px solid #FF8484'});
+				  	$('#' + div).val('').attr('placeholder', placeholder);
+				  	return 0;
+			  	}
+			}else{
+		    	$('#' + div).css({'border-left':'3px solid #FF8484'});
+		    	$('#' + div).val('').attr('placeholder', placeholder);
+		    	return 0;
+			}
+	  	}, 
+	  	/**
+		* validar el rif en venezuela
+		**/
+	  	rif: function (valor) { 
+			rif = $('#' + valor).val();
+			numero = rif.substr(1,15);
+			letra = rif.split("",1);
+
+			if(letra == 'j' || letra == 'o' 
+			|| letra == 'J' || letra == 'O'){
+			  	if((rif.length == 10)){
+				  	$('#' + valor).css({'border-left':'1px solid #CCCCCC'});
+				  	return rif;
+			  	}else{
+				  	$('#' + valor).css({'border-left':'3px solid #FF8484'});
+				  	$('#' + div).val('').attr('placeholder', 'Rif incorrecto');
+				  	return 0;
+			  	}
+			}else{
+			    $('#' + valor).css({'border-left':'3px solid #FF8484'});
+			    $('#' + div).val('').attr('placeholder', 'Rif sin formato');
+			    return 0;
+			}
+	  	},       
+	  	/**
+		* valida el campo del telefono
+		**/
+	  	telefono: function (div) {
+			telefono = $('#' + div).val();
+			if(telefono.length == 11){
+			    $('#' + div).css({'border-left':'1px solid #CCCCCC'});
+			    return telefono;
+			}else{
+			    $('#' + div).css({'border-left':'3px solid #FF8484'});
+			    $('#' + div).val('').attr('placeholder', 'Teléfono incorrecto');
+			    return 0;
+			}
+	  	}, 
+	  	/**
+		* valida el campo del correo
+		**/
+		correo: function (div) {
+			correo = $('#' + div).val();
+			arroba = 0;
+			punto = 0;
+			ind = 0;
+
+			for(i=1;i<(correo.length-1);i++){
+			    if(correo[i] == '@'){
+				    arroba ++;
+				    ind = i;
+			    }
+			}
+			for(i=ind;i<(correo.length-1);i++){
+			    if(correo[i] == '.')
+				    punto ++;
+			}
+
+			if((arroba == 1) && (punto > 0)){
+			    patron = /[\^$*+?=!¡¿#~€¬!"%&?:\\/()\[\]{}]/;
+			        if (patron.test(correo)){
+					    $('#' + div).css({'border-left':'3px solid #FF8484'});
+					    $('#' + div).val('').attr('placeholder', 'Correo incorrecto');
+					    return 0;
+			}else{
+				$('#' + div).css({'border-left':'1px solid #CCCCCC'});
+				return correo;
+			    }          
+			}else{
+			    $('#' + div).css({'border-left':'3px solid #FF8484'});
+			    $('#' + div).val('').attr('placeholder', 'Correo sin formato');
+			    return 0;
+			}
+		},
+		/**
+		* valida que el formato sea de fecha
+		**/		
+		fecha: function (div) {
+			fecha = $('#' + div).val();
+			expresion = new RegExp('(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}','g');
+			date  = new Date(fecha.substring(6,10),fecha.substring(3,5)-1,fecha.substring(0,2));
+			if (expresion.test(fecha)){
+			    $('#' + div).css({'border-left':'1px solid #CCCCCC'});
 			    return 1;
-		  }
-		}
-		$('#' + div).css({'border-left':'3px solid #FF8484'});
-		return 0;        
-	  },   
-	  /****************************************************
-		VALIDA EL CAMPO DE CEDULA DE IDENTIDAD VENEZOLANA
-	  
-				   
-	  
-	  
-	  ****************************************************/
-	  cedula: function (div) {
-		cedula = $('#' + div).val();
-		numero = cedula.substr(1,9);
-		letra = cedula.split("",1);
-		if (letra == 'v' || letra == 'e' 
-		 || letra == 'V' || letra == 'E'){
-		  if((cedula.length >= 4) && (cedula.length <= 9)){
-			  $('#' + div).css({'border-left':'1px solid #CCCCCC'});
-			  return cedula;
-		  }else{
-			  $('#' + div).css({'border-left':'3px solid #FF8484'});
-			  $('#' + div).val('').attr('placeholder', 'Ingresar Cédula');
-			  return 0;
-		  }
-		}else{
-		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Ingresar Cédula');
-		    return 0;
-		}
-	  }, 
-	  /****************************************************
-		VALIDA EL CAMPO DE RIF
-	  
-				   
-	  
-	  
-	  ****************************************************/
-	  rif: function (valor) { 
-		rif = $('#' + valor).val();
-		numero = rif.substr(1,15);
-		letra = rif.split("",1);
-
-		if(letra == 'j' || letra == 'o' 
-		|| letra == 'J' || letra == 'O'){
-		  if((rif.length == 10)){
-			  $('#' + valor).css({'border-left':'1px solid #CCCCCC'});
-			  return rif;
-		  }else{
-			  $('#' + valor).css({'border-left':'3px solid #FF8484'});
-			  $('#' + div).val('').attr('placeholder', 'Rif incorrecto');
-			  return 0;
-		  }
-		}else{
-		    $('#' + valor).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Rif sin formato');
-		    return 0;
-		}
-	  },       
-	  /****************************************************
-		VALIDA EL CAMPO DE TELEFONO
-	  
-				   
-	  
-	  
-	  ****************************************************/
-	  telefono: function (div) {
-		telefono = $('#' + div).val();
-		if(telefono.length == 11){
-		    $('#' + div).css({'border-left':'1px solid #CCCCCC'});
-		    return telefono;
-		}else{
-		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Teléfono incorrecto');
-		    return 0;
-		}
-	  }, 
-	  /****************************************************
-		VALIDA EL CAMPO CORREO EVITANDO QUE TENGA 
-		CARACTERES ESPECIALES
-				   
-	  
-	  
-	  ****************************************************/
-	correo: function (div) {
-		correo = $('#' + div).val();
-		arroba = 0;
-		punto = 0;
-		ind = 0;
-
-		for(i=1;i<(correo.length-1);i++){
-		    if(correo[i] == '@'){
-			    arroba ++;
-			    ind = i;
-		    }
-		}
-		for(i=ind;i<(correo.length-1);i++){
-		    if(correo[i] == '.')
-			    punto ++;
-		}
-
-		if((arroba == 1) && (punto > 0)){
-		    patron = /[\^$*+?=!¡¿#~€¬!"%&?:\\/()\[\]{}]/;
-		        if (patron.test(correo)){
-				    $('#' + div).css({'border-left':'3px solid #FF8484'});
-				    $('#' + div).val('').attr('placeholder', 'Correo incorrecto');
-				    return 0;
-		}else{
-			$('#' + div).css({'border-left':'1px solid #CCCCCC'});
-			return correo;
-		    }          
-		}else{
-		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Correo sin formato');
-		    return 0;
-		}
-	  },
-	fecha: function (div) {
-		fecha = $('#' + div).val();
-		expresion = new RegExp('(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}','g');
-		date  = new Date(fecha.substring(6,10),fecha.substring(3,5)-1,fecha.substring(0,2));
-		if (expresion.test(fecha)){
-		    $('#' + div).css({'border-left':'1px solid #CCCCCC'});
-		    return 1;
-		}else{
-		    $('#' + div).css({'border-left':'3px solid #FF8484'});
-		    $('#' + div).val('').attr('placeholder', 'Fecha incorrecto');
-		    return 0
-		}        
-	  },
-	url: function(div){
-		url = $('#' + div).val();
-		url = 'http://'+ url;
-		expresion = /^(http):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
-		if (expresion.test(url)){
-		    return url;
-		}else{
-		    return 0;
-		}
-	  },    
+			}else{
+			    $('#' + div).css({'border-left':'3px solid #FF8484'});
+			    $('#' + div).val('').attr('placeholder', 'Fecha incorrecto');
+			    return 0
+			}        
+		},
+		/**
+		* valida que la url sea valida
+		**/
+		url: function(div){
+			url = $('#' + div).val();
+			url = 'http://'+ url;
+			expresion = /^(http):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
+			if (expresion.test(url)){
+			    return url;
+			}else{
+			    return 0;
+			}
+		},    
 	};
 
 	autocomplete = {           
-	  /****************************************************
-		AUTOCOMPLETADO ASIGNADO A LOS ELEMENTOS;
-		LABEL
-		ID       
-		URL
-		BLOQUE EL INPUT SELECCIONADO
-	  ****************************************************/      
-	bloqueado: function(div, id_div, controlador){ 
-		$('#' + div).autocomplete({
-		    delay: 0,
+	  	/**
+		* autocompletado con elemntos bloqueados
+		* label, id, input (se bloquea)
+		**/     
+		bloqueado: function(div, id_div, controlador){ 
+			$('#' + div).autocomplete({
+			    delay: 0,
+				source: controlador,
+				minLength: 1,
+				select: opcionSeleccionada,
+			});
+
+			function opcionSeleccionada(event, ui){
+			    nombre = ui.item.label;
+			    id = ui.item.id;
+			    $('#' + div).attr('disabled', true);          
+			    $('#' + div).val(nombre);
+			    $('#' + id_div).val(id);
+			    event.preventDefault();
+			}
+	  	},
+	  	/**
+		* autocompletado con auxiliar
+		* para rellenar input adicional
+		* ejmplo: cedula (completar nombre)
+		**/         
+		auxiliar: function(div, id_div, aux, controlador){
+			$('#' + div).autocomplete({
+			    delay: 0,
+				source: controlador,
+				minLength: 1,
+				select: opcionSeleccionada,
+			});
+
+			function opcionSeleccionada(event, ui){
+			    nombre = ui.item.label;
+			    id = ui.item.id;
+			    auxiliar = (aux != '') ? ui.item.aux : '';
+			    $('#' + div).attr('disabled', true);          
+			    $('#' + div).val(nombre);
+			    $('#' + id_div).val(id);
+			    $('#' + aux).val(auxiliar);
+			   event.preventDefault();
+			}
+	  	},
+	  	/**
+		* autocompletado editable
+		* una vez seleccionado el input luego se puede editar
+		**/             
+		editable: function(div, id_div, controlador){
+			$('#' + div).autocomplete({
+			delay: 0,
 			source: controlador,
 			minLength: 1,
 			select: opcionSeleccionada,
-		});
+			});
 
-		function opcionSeleccionada(event, ui){
-		    nombre = ui.item.label;
-		    id = ui.item.id;
-		    $('#' + div).attr('disabled', true);          
-		    $('#' + div).val(nombre);
-		    $('#' + id_div).val(id);
-		    event.preventDefault();
-		}
-	  },
-	  /****************************************************
-		AUTOCOMPLETADO ASIGNADO A LOS ELEMENTOS;
-		LABEL
-		ID       
-		URL
-		AUXILIAR
-	   BLOQUE EL INPUT SELECCIONADO
-	  ****************************************************/            
-	auxiliar: function(div, id_div, aux, controlador){
-		$('#' + div).autocomplete({
-		    delay: 0,
-			source: controlador,
-			minLength: 1,
-			select: opcionSeleccionada,
-		});
-
-		function opcionSeleccionada(event, ui){
-		    nombre = ui.item.label;
-		    id = ui.item.id;
-		    auxiliar = (aux != '') ? ui.item.aux : '';
-		    $('#' + div).attr('disabled', true);          
-		    $('#' + div).val(nombre);
-		    $('#' + id_div).val(id);
-		    $('#' + aux).val(auxiliar);
-		   event.preventDefault();
-		}
-	  },
-	  /***************************************************
-		AUTOCOMPLETADO ASIGNADO A LOS ELEMENTOS;
-		LABEL
-		ID       
-		URL
-	  ****************************************************/             
-	editable: function(div, id_div, controlador){
-		$('#' + div).autocomplete({
-		delay: 0,
-		source: controlador,
-		minLength: 1,
-		select: opcionSeleccionada,
-		});
-
-		function opcionSeleccionada(event, ui){
-		    nombre = ui.item.label;
-		    id = ui.item.id;		  
-		    $('#' + div).val(nombre);
-		    $('#' + id_div).val(id);
-		    event.preventDefault();
-		}
-	  },
+			function opcionSeleccionada(event, ui){
+			    nombre = ui.item.label;
+			    id = ui.item.id;		  
+			    $('#' + div).val(nombre);
+			    $('#' + id_div).val(id);
+			    event.preventDefault();
+			}
+	  	},
 	}; 
 
 	evento = {
-	  /****************************************************
-		VERIFICA QUE LA CAPA ESTE OCULTA O VISIBLE    
-		Y HACE LO CONTRARIO AL ESTADO ACTUAL.                   
-
-	  
-	  
-	  ****************************************************/      
-	mostrar: function(div){
-		var div = div.split(",");
-		for (i = 0; i < div.length; i++) {
-		    if($(div[i]).is(':hidden')){
-			    $(div[i]).slideDown();
-		    }else{
-			    $(div[i]).hide();          
-		  }
+	  	/**
+		* muestra o oculta una determinada capa
+		* si esta oculta la pone visible
+		* si esta visible la coloca oculta
+		**/     
+		mostrar: function(div){
+			var div = div.split(",");
+			for (i = 0; i < div.length; i++) {
+			    if($(div[i]).is(':hidden')){
+				    $(div[i]).slideDown();
+			    }else{
+				    $(div[i]).hide();          
+			  }
+			}
+		  },
 		}
-	  },
-	}
 
 	obtener = { 
-	  /****************************************************
-	   OBTENER LA FECHA ACTUAL
-	  
-				  
-	  
-	  
-	  ****************************************************/
-	fecha: function(){
-		obj = new Date();
-		dia = obj.getDate();
-		mes = (obj.getMonth() + 1);
-		if(mes < 10)  mes = '0' + (obj.getMonth() + 1); else mes = (obj.getMonth() + 1);        
-		if(dia < 10)  dia = '0' + obj.getDate();        else dia = obj.getDate();        
-		anno = obj.getFullYear();
-		fecha = dia + '/' + mes + '/' + anno;
-		return fecha;
-	  },
-	  /****************************************************
-	   OBTENER LA HORA ACTUAL
-	  
-				   
-	  
-	  
-	  ****************************************************/    
-	tiempo: function(){
-		obj = new Date();
-		hora = obj.getHours();
-		minutos = obj.getMinutes();
-		segundos = obj.getSeconds();
-		if(hora < 10) { hora = '0' + obj.getHours(); } else { hora = obj.getHours(); }
-		if(minutos < 10) { minutos = '0' + obj.getMinutes(); } else { minutos = obj.getMinutes(); }
-		tiempo = hora + ':' + minutos;
-		return tiempo;
-	  }
+		/**
+		* obtener la fecha actual
+		**/
+		fecha: function(){
+			obj = new Date();
+			dia = obj.getDate();
+			mes = (obj.getMonth() + 1);
+			if(mes < 10)  mes = '0' + (obj.getMonth() + 1); else mes = (obj.getMonth() + 1);        
+			if(dia < 10)  dia = '0' + obj.getDate();        else dia = obj.getDate();        
+			anno = obj.getFullYear();
+			fecha = dia + '/' + mes + '/' + anno;
+			return fecha;
+	  	},
+	  	/**
+		* obtener la hora actual
+		**/   
+		tiempo: function(){
+			obj = new Date();
+			hora = obj.getHours();
+			minutos = obj.getMinutes();
+			segundos = obj.getSeconds();
+			if(hora < 10) { hora = '0' + obj.getHours(); } else { hora = obj.getHours(); }
+			if(minutos < 10) { minutos = '0' + obj.getMinutes(); } else { minutos = obj.getMinutes(); }
+			tiempo = hora + ':' + minutos;
+			return tiempo;
+	  	}
 	};
 
 	ajax = { 
-	  /****************************************************
-		ANIMACION PARA CUANO SE ESTA ENVIANDO UNA
-		PETICION EN VIA AJAX                   
-
-	  
-	  
-	  ****************************************************/         
-	before: function(div, img){
-		$(div).html('<p align="center"><img src="'+ img +'" style="margin: 5% auto; width: 20px;"></p>');
-	},
-	  /****************************************************
-		LE DA UNA NOTIFICACION AL USUARIO DURANTE CIERTOS
-		SEGUNDOS ESTABLECIDOS POR EL USUARIO.                   
-
-	  
-	  
-	  ****************************************************/   
-	notificacion: function (div, milisegundos){
-		$('#' + div).slideDown();
-		setTimeout(function(){
-		$('#' + div).slideUp();
-		}, milisegundos);
-	  },
-	  /****************************************************
-		LE MUESTRA AL USUARIO LOS TIPOS DE ERRORES
-		O INFORMACION DEL SISTEMA                  
-
-	  
-	  
-	  ****************************************************/   
-	mensaje: function (div, msj, tipo){
-		original = $('#' + div).html();        
-		if(tipo == 'error'){
-		    $('#' + div).html('<h4><span class="label label-danger"><strong>Error!</strong> '+ msj +'</span></h4>');
-		}else if(tipo == 'success'){
-		    $('#' + div).html('<h4><span class="label label-success"><strong>Satisfactorio!</strong> '+ msj +'</span></h4>');
-		}else if(tipo == 'info'){
-		    $('#' + div).html('<h4><span class="label label-info"><strong>Información:</strong> '+ msj +'</span></h4>');
-		}
-		setTimeout(function(){          
-		    $('#' + div).html(original);
-		}, 5000);
-	  },
-	  /****************************************************
-		PERMITE HABILITAR O DESHABILITAR CUALQUIER
-		CAMPO EN LA BASE DE DATOS MEDIANTE AJAX                   
-
-	  
-	  
-	  ****************************************************/   
-	activar: function(id, div, url, msj){
-		$.ajax({
-		type: 'POST',
-		url: url,
-		data: id,
-		success: function (data) { 
-		ajax.mensaje( div, msj, 'success');
+		/**
+		* animacion cuando se envia una peticion
+		**/         
+		before: function(div, img){
+			$(div).html('<p align="center"><img src="'+ img +'" style="margin: 5% auto; width: 20px;"></p>');
 		},
-		});
-	  },
-	  /****************************************************
-		LE MUETSRA AL USUARIO UNFORMACION DEL FORMULARIO                 
-
-	  
-	  
-	  ****************************************************/   
-	informacion: function (div, msj){
-		original = $('#' + div).html();        
-		$('#' + div).html('<i><b>'+ msj +'</b></i>');
-		setTimeout(function(){          
-	    $('#' + div).html(original);
-		}, 5000);
-	  },     
+		/**
+		* notificacion por una cantidad limitada de segundos
+		**/  
+		notificacion: function (div, milisegundos){
+			$('#' + div).slideDown();
+			setTimeout(function(){
+			$('#' + div).slideUp();
+			}, milisegundos);
+	  	},
+	  	/**
+		* mensajes del sistema
+		**/  
+		mensaje: function (div, msj, tipo){
+			original = $('#' + div).html();        
+			if(tipo == 'error'){
+			    $('#' + div).html('<h4><span class="label label-danger"><strong>Error!</strong> '+ msj +'</span></h4>');
+			}else if(tipo == 'success'){
+			    $('#' + div).html('<h4><span class="label label-success"><strong>Satisfactorio!</strong> '+ msj +'</span></h4>');
+			}else if(tipo == 'info'){
+			    $('#' + div).html('<h4><span class="label label-info"><strong>Información:</strong> '+ msj +'</span></h4>');
+			}
+			setTimeout(function(){          
+			    $('#' + div).html(original);
+			}, 5000);
+	  	},
+	  	/**
+		* habilita y deshabilita campos en base de datos
+		**/
+		activar: function(id, div, url, msj){
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: id,
+				success: function (data) { 
+					ajax.mensaje( div, msj, 'success');
+				},
+			});
+	  	},
+	  	/**
+		* informacion al usuario
+		**/  
+		informacion: function (div, msj){
+			original = $('#' + div).html();        
+			$('#' + div).html('<i><b>'+ msj +'</b></i>');
+			setTimeout(function(){          
+		    	$('#' + div).html(original);
+			}, 5000);
+		},     
 	};  
 
 	transformar = { 
