@@ -291,9 +291,9 @@ class Index extends CI_Controller{
 		**/	
 		$this->layout->setTitle('.: Nuevo Perfil :.');		
 		$resumen_perfil   = $this->datos_perfil;
-		$arreglo 					= array(
+		$arreglo = array(
 			'id_aplicacion' => $this->id_aplicacion,
-			'id_usuario'		=> $this->id_usuario						
+			'id_usuario'    => $this->id_usuario						
 		);
 		
 		foreach ($this->validar_perfil as $key) { $i = $key->nombre_apellido;}
@@ -311,15 +311,15 @@ class Index extends CI_Controller{
 		**/
 		if ($this->input->post()){
 			$arreglo = array(
-				'nombre' 						=> $this->input->post("i_nombre"),
-				'apellido' 					=> $this->input->post("i_apellido"),
-				'cedula' 						=> $this->input->post("i_cedula"),
-				'telefono' 					=> $this->input->post("i_telefono"),	
+				'nombre' 			=> $this->input->post("i_nombre"),
+				'apellido' 			=> $this->input->post("i_apellido"),
+				'cedula' 			=> $this->input->post("i_cedula"),
+				'telefono' 			=> $this->input->post("i_telefono"),	
 				'fecha_nacimiento' 	=> $this->input->post("i_fecha_nacimiento"),
-				'direccion' 				=> $this->input->post("i_direccion"),						
-				'id_usuario' 				=> $this->input->post("id_usuario"),
-				'sexo_perfil'    		=> $this->input->post("i_sexo"),
-				'portal_web'    		=> $this->input->post("i_portal_web"),
+				'direccion' 		=> $this->input->post("i_direccion"),						
+				'id_usuario' 		=> $this->input->post("id_usuario"),
+				'sexo_perfil'    	=> $this->input->post("i_sexo"),
+				'portal_web_perfil' => ($this->input->post("i_portal_web")) ? $this->input->post("i_portal_web") : '',
 				'id_aplicacion'     => $this->id_aplicacion
 			);
 			$this->t_perfil_model->actualizar_perfil($arreglo);			
@@ -332,7 +332,7 @@ class Index extends CI_Controller{
 		**/
 		$this->layout->setTitle('.: Editar contrasena :.');		
 		$arreglo = array(
-			'id_usuario'		=> $this->id_usuario						
+			'id_usuario' => $this->id_usuario						
 		);
 		$datos_usuario = $this->t_usuario_model->consultar_usuario($arreglo);
 		$this->layout->view('perfil/perfil_contrasena_password', compact('datos_usuario'));
@@ -344,8 +344,8 @@ class Index extends CI_Controller{
 		**/
 		if ($this->input->post()){
 			$arreglo = array(
-				'correo_usuario' 				 => $this->input->post("i_correo"),
-				'clave_usuario'  				 => $this->input->post("i_contrasena"),
+				'correo_usuario' 		 => $this->input->post("i_correo"),
+				'clave_usuario'  		 => $this->input->post("i_contrasena"),
 				'repetir_clave_usuario'  => $this->input->post("i_repetir_contrasena"),
 			);
 			$this->t_usuario_model->editar_clave_usuario($arreglo);		
@@ -358,7 +358,7 @@ class Index extends CI_Controller{
 		**/
 		$this->layout->setTitle('.: Editar perfil :.');		
 		$arreglo = array(
-			'id_usuario'		=> $this->id_usuario						
+			'id_usuario' => $this->id_usuario						
 		);
 		$datos_perfil = $this->t_perfil_model->consultar_perfil($arreglo);
 		$this->layout->view('perfil/perfil_editar', compact('datos_perfil', 'arreglo'));
@@ -369,15 +369,15 @@ class Index extends CI_Controller{
 		*	Se envian los datos del perfil a actualizar
 		**/
 		$arreglo = array(
-			'id_usuario' 				=> $this->input->post("id_usuario"),
-			'nombre'  				 	=> $this->input->post("i_nombre"),
-			'apellido'  				=> $this->input->post("i_apellido"),
-			'cedula'  					=> $this->input->post("i_cedula"),
-			'telefono'  				=> $this->input->post("i_telefono"),
+			'id_usuario' 		=> $this->input->post("id_usuario"),
+			'nombre'  		    => $this->input->post("i_nombre"),
+			'apellido'  		=> $this->input->post("i_apellido"),
+			'cedula'  			=> $this->input->post("i_cedula"),
+			'telefono'  		=> $this->input->post("i_telefono"),
 			'fecha_nacimiento'  => $this->input->post("i_fecha_nacimiento"),
-			'direccion'  				=> $this->input->post("i_direccion"),
-			'sexo_perfil'  			=> $this->input->post("i_sexo"),
-			'portal_web_perfil' => $this->input->post("i_portal_web")
+			'direccion'  		=> $this->input->post("i_direccion"),
+			'sexo_perfil'  		=> $this->input->post("i_sexo"),
+			'portal_web_perfil' => ($this->input->post("i_portal_web")) ? $this->input->post("i_portal_web") : '',
 
 		);
 		$this->t_perfil_model->editar_datos_perfil($arreglo);		
@@ -398,25 +398,25 @@ class Index extends CI_Controller{
 		$error 										= NULL;
 		$config['upload_path'] 		= './public/uploads/';
 		$config['allowed_types'] 	= 'gif|jpg|jpeg|png';
-		$config['max_size']				= '1000';
+		$config['max_size']			= '1000';
 		$config['overwrite']  		= false;
 		$config['encrypt_name'] 	= true;
 		
 		$this->load->library('upload',$config);
 
 		if (!$this->upload->do_upload('i_file')) { 
-			$error        = array(
-				"error"     => $this->upload->display_errors()
+			$error = array(
+				"error" => $this->upload->display_errors()
 			);
-			$url_imagen   = 'public/img/upload.png';
+			$url_imagen = 'public/img/upload.png';
 		}else{
-			$img 				  = $this->upload->data();
-			$ruta_aux 	  = explode('public/', $img['full_path']);
-			$url_imagen 	= 'public/'.$ruta_aux[1];
+			$img 		= $this->upload->data();
+			$ruta_aux 	= explode('public/', $img['full_path']);
+			$url_imagen = 'public/'.$ruta_aux[1];
 		}		
 
 		$arreglo = array(
-			'id_usuario' 				=> $this->id_usuario,
+			'id_usuario' 	    => $this->id_usuario,
 			'url_imagen_perfil' => $url_imagen
 		);
 		$this->t_perfil_model->actualizar_imagen_perfil($arreglo);	

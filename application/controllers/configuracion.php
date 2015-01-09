@@ -80,16 +80,16 @@ class Configuracion extends CI_Controller{
 		**/
 		if ($this->input->post()){
 			$arreglo = array(
-				'nombre' 		   => $this->input->post("i_nombre"),
-				'apellido' 		   => $this->input->post("i_apellido"),
-				'cedula' 		   => $this->input->post("i_cedula"),
-				'telefono' 		   => $this->input->post("i_telefono"),	
-				'fecha_nacimiento' => $this->input->post("i_fecha_nacimiento"),
-				'direccion' 	   => $this->input->post("i_direccion"),						
-				'id_usuario' 	   => $this->input->post("id_usuario"),
-				'sexo_perfil'      => $this->input->post("i_sexo"),
-				'portal_web'       => $this->input->post("i_portal_web"),
-				'id_aplicacion'    => $this->id_aplicacion
+				'nombre' 		    => $this->input->post("i_nombre"),
+				'apellido' 		    => $this->input->post("i_apellido"),
+				'cedula' 		    => $this->input->post("i_cedula"),
+				'telefono' 		    => $this->input->post("i_telefono"),	
+				'fecha_nacimiento'  => $this->input->post("i_fecha_nacimiento"),
+				'direccion' 	    => $this->input->post("i_direccion"),						
+				'id_usuario' 	    => $this->input->post("id_usuario"),
+				'sexo_perfil'       => $this->input->post("i_sexo"),
+				'portal_web_perfil' => $this->input->post("i_portal_web")) ? $this->input->post("i_portal_web") : '',
+				'id_aplicacion'     => $this->id_aplicacion
 			);
 			$this->t_perfil_model->actualizar_perfil($arreglo);			
 		}
@@ -114,8 +114,8 @@ class Configuracion extends CI_Controller{
 		**/
 		if ($this->input->post()){
 			$arreglo = array(
-				'correo_usuario' 				 => $this->input->post("i_correo"),
-				'clave_usuario'  				 => $this->input->post("i_contrasena"),
+				'correo_usuario' 	     => $this->input->post("i_correo"),
+				'clave_usuario'          => $this->input->post("i_contrasena"),
 				'repetir_clave_usuario'  => $this->input->post("i_repetir_contrasena"),
 			);
 			$this->t_usuario_model->editar_clave_usuario($arreglo);		
@@ -149,7 +149,7 @@ class Configuracion extends CI_Controller{
 				'fecha_nacimiento'  => $this->input->post("i_fecha_nacimiento"),
 				'direccion'  		=> $this->input->post("i_direccion"),
 				'sexo_perfil'  		=> $this->input->post("i_sexo"),
-				'portal_web_perfil' => $this->input->post("i_portal_web")
+				'portal_web_perfil' => $this->input->post("i_portal_web")) ? $this->input->post("i_portal_web") : '',
 
 			);
 			$this->t_perfil_model->editar_datos_perfil($arreglo);		
