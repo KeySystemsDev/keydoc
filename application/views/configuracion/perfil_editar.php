@@ -135,10 +135,10 @@
 				<div class="box-footer mostrar">
 					<a href="<?php echo base_url();?>configuracion/perfil" class="btn btn-primary">Ver Perfil</a>
 				</div>
-			</form>
-			<div id="msj" class="panel-footer">
-				<info id="msj">Aquí aparecerán mensajes del sistema</info>
-			</div>
+			</form>			
 		</div>  
+		<div id="msj" class="panel-footer">
+			<info id="msj">Aquí aparecerán mensajes del sistema</info>
+		</div>
 	</div>
 </section>
