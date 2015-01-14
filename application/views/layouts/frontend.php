@@ -328,11 +328,8 @@
                   <li class="user-footer">
                     <div class="btn-group">
                       <?php if($this->session->userdata('id_usuario')){ ?>
-                        <a href="<?php echo base_url();?>sesion/desconectar" class="btn btn-default">Cerrar Sesión</a>
-                        <a href="<?php echo base_url();?>perfil" class="btn btn-default">Perfil</a>
-                      <?php }else{ ?>
-                        <a href="<?php echo base_url();?>sesion/" class="btn btn-default">Ingresar</a>
-                        <a href="<?php echo base_url();?>sesion/registrate" class="btn btn-default">Registrarme</a>
+                        <a href="<?php echo base_url();?>sesion/desconectar" class="btn-sm btn-default">Desconectarme</a>
+                        <a href="<?php echo base_url();?>perfil" class="btn-sm btn-default">Perfil</a>
                       <?php } ?>
                     </div>
                   </li>

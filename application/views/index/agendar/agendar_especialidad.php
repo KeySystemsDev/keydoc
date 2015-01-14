@@ -61,24 +61,13 @@
 									'<div class="col-md-3">
 										<ul class="list-group">                 
 											<li class="list-group-item" align="center">
-												'.mysql_to_utf8($key->nombre_doctor, 'titulo').'
+												<a href="'.base_url().'doctor/usuario-'.base64_encode($key->id_usuario).'" class="btn-sm btn-default">'.mysql_to_utf8($key->nombre_doctor, 'titulo').'</a>
 											</li>
 											<a href="'.base_url().'doctor/usuario-'.base64_encode($key->id_usuario).'" class="list-group-item" align="center" style="padding:0px;">
 												<img src="'.base_url().$key->url_imagen_perfil.'" width="100%" alt="'.mysql_to_utf8($key->nombre_doctor, 'titulo').'" class="img-responsive"/>
 											</a>
-											<li class="list-group-item" align="center">
-												<div class="btn-group">
-													<a href="#" class="btn btn-info">Visitas</a>
-													<a href="#" class="btn btn-info">
-														44
-													</a>
-												</div>
-												<div class="btn-group">
-													<a href="'.base_url().'doctor/usuario-'.base64_encode($key->id_usuario).'" class="btn btn-success">Ver Perfil</a>
-													<a href="'.base_url().'doctor/usuario-'.base64_encode($key->id_usuario).'" class="btn btn-success">
-														<span class="fa fa-arrow-right"></span>
-													</a>
-												</div>
+											<li class="list-group-item" align="center">												
+												<a href="'.base_url().'doctor/usuario-'.base64_encode($key->id_usuario).'" class="btn-sm btn-default">Visitas 44</a>
 											</li>
 										</ul>								
 									</div>';

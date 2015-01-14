@@ -59,12 +59,12 @@
 		<div class="thumbnail">
 			<img src="<?php echo base_url().$url_imagen?>" width="100%" class="img-responsive centrado">
 		</div>
-		<!--<div class="btn-group">
+		<div class="btn-group">
 			<a href="<?php echo base_url();?>foto" class="btn btn-info">Subir Foto</a>
 			<a href="<?php echo base_url();?>foto" class="btn btn-info">
 				<span class="fa fa-arrow-up"></span>
 			</a>
-		</div>-->
+		</div>
 		<div class="btn-group">
 			<a href="<?php echo base_url();?>perfil" class="btn btn-success">
 				<span class="fa fa-arrow-left"></span>

@@ -385,42 +385,70 @@ class Index extends CI_Controller{
 
 	public function foto(){
 		/**
-		*	Modulo subir la foto del perfil
+		* Proceso para subir la foto del paciente
 		**/
-		$this->layout->setTitle('.: Subir foto :.');		
-		$this->layout->view('subir_foto');	
-	}
-
-	public function subir_foto(){	
-		/**
-		*	Se trabaja la imagen que se subira
-		**/
-		$error 										= NULL;
-		$config['upload_path'] 		= './public/uploads/';
-		$config['allowed_types'] 	= 'gif|jpg|jpeg|png';
-		$config['max_size']			= '1000';
-		$config['overwrite']  		= false;
-		$config['encrypt_name'] 	= true;
-		
-		$this->load->library('upload',$config);
-
-		if (!$this->upload->do_upload('i_file')) { 
-			$error = array(
-				"error" => $this->upload->display_errors()
-			);
-			$url_imagen = 'public/img/upload.png';
-		}else{
-			$img 		= $this->upload->data();
-			$ruta_aux 	= explode('public/', $img['full_path']);
-			$url_imagen = 'public/'.$ruta_aux[1];
-		}		
-
-		$arreglo = array(
-			'id_usuario' 	    => $this->id_usuario,
-			'url_imagen_perfil' => $url_imagen
+		$this->load->helper(array('form', 'url'));  
+		$this->load->library('image_moo') ; 		
+		$this->layout->js(
+			array(
+				base_url().'public/libs/bootstrap/js/plugins/fileinput/jquery-1.3.2.min.js',
+				base_url().'public/libs/bootstrap/js/plugins/fileinput/bootstrap-fileinput.js',
+				base_url().'public/libs/bootstrap/js/plugins/fileinput/jquery.imgareaselect.min.js',
+			)
 		);
-		$this->t_perfil_model->actualizar_imagen_perfil($arreglo);	
-		redirect(base_url().'perfil', 'refresh');					
+		$this->layout->setTitle('.: Subir foto :.');		
+
+		$data['upload_path']        = $upload_path          = "./public/upload/real/" ;
+		$data['destination_thumbs'] = $destination_thumbs   = "./public/upload/thumbs/" ;
+		$data['large_photo_exists'] = $data['thumb_photo_exists'] = $data['error'] = NULL ;
+		$data['thumb_width']        = "270";
+		$data['thumb_height']       = "270";
+	
+		if (!empty($_POST['upload'])) {
+
+			$config['upload_path']  = $upload_path ;
+			$config['allowed_types']= 'gif|jpg|png|jpeg';
+			$config['max_size']     = '2000';
+			$config['max_width']    = '700';
+			$config['max_height']   = '700';
+
+			$this->load->library('upload', $config);
+	
+			if ($this->upload->do_upload("image")) {
+				$data['img']   = $this->upload->data();
+				$data['large_photo_exists']  = "<img src=\"".base_url() . $upload_path.$data['img']['file_name']."\" alt=\"Large Image\"/>";
+			}
+		}elseif (!empty($_POST['upload_thumbnail'])) {
+			$x1 = $this->input->post('x1',TRUE) ;
+			$y1 = $this->input->post('y1',TRUE) ;
+			$x2 = $this->input->post('x2',TRUE) ;
+			$y2 = $this->input->post('y2',TRUE) ;
+			$w  = $this->input->post('w',TRUE) ;
+			$h  = $this->input->post('h',TRUE) ;
+
+			$file_name = $this->input->post('file_name',TRUE) ;
+			if ($file_name) {
+				$this->image_moo
+					->load($upload_path . $file_name)
+					->crop($x1,$y1,$x2,$y2)
+					->save($destination_thumbs . $file_name) ;
+
+				if ($this->image_moo->errors) {
+					$data['error'] = $this->image_moo->display_errors() ;
+				} else {
+					$data['thumb_photo_exists'] = "<img src=\"".base_url().$destination_thumbs.$file_name."\" width=\"100%\" alt=\"Thumbnail Image\"/>";
+					$data['large_photo_exists'] = "<img src=\"".base_url().$upload_path.$file_name."\" width=\"100%\" alt=\"Large Image\"/>";
+
+					$arreglo = array(
+						'id_usuario' 		=> $this->id_usuario,
+						'url_imagen_perfil' => $destination_thumbs.$file_name,
+					);
+					$this->t_perfil_model->actualizar_imagen_perfil($arreglo);
+				}
+			}
+		}
+
+		$this->layout->view('perfil/subir_foto', $data);	
 	}
 
 	public function paciente($id_cita){	

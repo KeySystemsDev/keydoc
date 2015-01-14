@@ -1,4 +1,3 @@
-
 <?php if($large_photo_exists && $thumb_photo_exists == NULL):?>
 	<script src="<?php echo base_url();?>public/libs/bootstrap/js/plugins/fileinput/jquery.imgpreview.js" type="text/javascript"></script>
 	<script type="text/javascript">

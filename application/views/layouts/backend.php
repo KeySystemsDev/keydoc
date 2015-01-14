@@ -329,8 +329,8 @@
 								<li class="user-footer">
 									<div class="btn-group">
 										<?php if($this->session->userdata('usuario')){ ?>
-											<a href="<?php echo base_url();?>sesion/desconectar" class="btn btn-default">Cerrar Sesión</a>
-											<a href="<?php echo base_url();?>configuracion/perfil" class="btn btn-default">Perfil</a>
+											<a href="<?php echo base_url();?>sesion/desconectar" class="btn-sm btn-default">Desconectarme</a>
+											<a href="<?php echo base_url();?>configuracion/perfil" class="btn-sm btn-default">Perfil</a>
 										<?php } ?>
 									</div>
 								</li>
