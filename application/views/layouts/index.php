@@ -16,7 +16,7 @@
 	  	<link href="<?php echo base_url()?>public/libs/pagina/css/agency.css" rel="stylesheet">
 
 	  	<!-- Custom Fonts -->
-	  	<link href="<?php echo base_url()?>public/libs/pagina/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	  	<link href="./public/libs/pagina/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	  	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	  	<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 	  	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
