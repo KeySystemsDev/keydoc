@@ -75,7 +75,7 @@
 		                            
 									echo 
 		                            '</th>
-		                            <th>Costo</th>
+		                            <th>'.$key->costo_horario.'</th>
 		                            <th>Costo Adicional</th>
 		                            <th>Costo Total</th>
 		                            <th>Observacion Publica</th>
@@ -88,7 +88,92 @@
             </div>
 		</div>
   	</div>
+
 </section>
+<div class="row">                        
+		<div class="col-md-12">
+			<div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Linea de tiempo de las citas del Pacientes</h3>
+                </div>
+                <section class="content">
+				    <!-- row -->
+				    <div class="row">                        
+				        <div class="col-md-12">
+				            <!-- The time line -->
+				            <ul class="timeline">
+				                <!-- timeline item -->
+				                <?php 
+									foreach ($historial as $key){ 
+										echo 
+						                '<li class="time-label">
+						                    <span class="bg-aqua">
+						                        <h4 style="margin: 5px 10px;"><i class="fa fa-calendar-o"></i> '.$key->fecha_horario.'<h4>
+						                    </span>
+						                </li>
+
+			               			 	<li>
+						                    <i class="fa fa-clock-o bg-yellow"></i>
+						                    <div class="timeline-item">
+			                        			<h3 class="timeline-header no-border"><a href="#">Hora: </a> '.$key->fecha_agenda_cita.' </h3>
+			                    			</div>
+						                </li>
+
+						                <li>
+						                    <i class="fa fa-stethoscope bg-green"></i>
+						                    <div class="timeline-item">
+			                        			<h3 class="timeline-header no-border"><a href="#">Consultorio: </a> '.$key->nombre_consultorio.'</h3>
+			                    			</div>
+						                </li>
+
+						                <li>
+						                    <i class="fa fa-shopping-cart bg-red"></i>
+						                    <div class="timeline-item">
+						                        <div class="timeline-item">
+							                        					             
+							                        <h4> 
+							                        	<span class="label label-default bg-green">Costo Base: '.$key->costo_horario.'</span>
+														&nbsp;&nbsp;
+				
+														<span class="label label-default bg-yellow">Costo Adicional: ...'.$key->costo_consulta_adicional.'</span>
+
+														&nbsp;&nbsp;
+
+														
+														<span class="label label-default bg-red">Costo Total: ...</span>
+													</h4>
+			
+												</div>
+						                    </div>
+						                </li>
+
+						                <li>
+						                    <i class="fa fa fa-pencil-square-o bg-purple"></i>
+						                    <div class="timeline-item">
+						                        <h3 class="timeline-header"><a href="#">Observación Pública</a></h3>
+						                        <div class="timeline-body">
+						                            ...'.$key->observacion_publica.'
+						                        </div>
+						                        <h3 class="timeline-header"><a href="#">Observación Privada</a></h3>
+						                        <div class="timeline-body">
+						                            ...'.$key->observacion_privada.'
+						                        </div> 
+						                    </div>
+						                </li>';
+				               		}
+								?>
+ 								
+				                <li>
+				                    <i class="fa"></i>
+				                </li>
+				            </ul>
+				        </div><!-- /.col -->
+				    </div><!-- /.row -->
+				</section>
+            </div>
+		</div>
+  	</div>
+
 <section class="content">  
 	linea de tiempo de la historia del paciente
 	<a href="<?php echo base_url().'citas/historia/'.str_replace('_', '-', $url).'/cita-'.base64_encode(3); ?>"> Atender </a>

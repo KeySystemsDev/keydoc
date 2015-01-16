@@ -82,4 +82,5 @@
 			</div>
 		</div>
 	</div>
+	<?php echo '<pre>'; print_r($pacientes); echo '</pre>'; ?>
 </section>
