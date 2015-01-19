@@ -107,9 +107,42 @@
 									foreach ($historial as $key){ 
 										echo 
 						                '<li class="time-label">
-						                    <span class="bg-aqua">
-						                        <h4 style="margin: 5px 10px;"><i class="fa fa-calendar-o"></i> '.$key->fecha_horario.'<h4>
-						                    </span>
+						                    <div class="bg-aqua">
+						                        <h4 style="margin: 5px 10px;">
+						                        	<i class="fa fa-calendar-o"></i> '.$key->fecha_horario.'
+						                        <h4>
+						                    </div>
+
+						                    ';
+											if ($key->asistencia_cita == 0) {
+												echo 	'<div class="bg-green box-action">
+						                        			<h4 style="margin: 5px 10px;">
+						                        				<i class="fa fa-check"></i>
+						                        					<a href="'.base_url().
+																 		'citas/historia/'.str_replace('_', '-', $url).
+																 		'/cita-'.base64_encode($key->id_cita).'"> 
+																 		Atender
+																 	</a>
+															<h4>
+														</div>';
+											}elseif ($key->asistencia_cita == 1) {
+												echo 	'<div class="bg-teal box-action">
+															<h4 style="margin: 5px 10px;">
+																<i class="fa fa-pencil-square-o"></i>
+																	<a href="">Ver Detalle</a>
+															<h4>
+													 	</div>';
+											}elseif ($key->asistencia_cita == -1) {
+												echo 	'<div class="bg-red box-action">
+															<h4 style="margin: 5px 10px;">
+																<i class="fa fa-exclamation-triangle"></i>
+																	<a href="">Falto</a>
+															<h4>
+														</div>';
+												}	
+		                            
+											echo'
+      
 						                </li>
 
 			               			 	<li>
@@ -120,7 +153,7 @@
 						                </li>
 
 						                <li>
-						                    <i class="fa fa-stethoscope bg-green"></i>
+						                    <i class="fa fa-stethoscope bg-teal"></i>
 						                    <div class="timeline-item">
 			                        			<h3 class="timeline-header no-border"><a href="#">Consultorio: </a> '.$key->nombre_consultorio.'</h3>
 			                    			</div>
