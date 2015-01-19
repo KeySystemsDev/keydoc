@@ -34,3 +34,21 @@
 .box-action a{
     color: white;
 }
+.col-md-3{
+    width: 35%;
+}
+.col-md-9{
+    width: 65%;
+}
+.box-profile {
+    text-align: center;
+    color:#666;
+    margin-bottom: 30px;
+}
+.box-profile img{
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+}
