@@ -11,7 +11,7 @@
 		});
 		$('#listado').dataTable();
 		$("#s_consultorio, #s_especialidad, #s_dia_consulta").select2();
-		$('#i_costo_consulta').caracteres('0123456789.');
+		$('#i_costo_consulta').caracteres('0123456789');
 		$('#i_fecha_consulta').caracteres('0123456789/');
 		$('#i_cupos').caracteres('0123456789');
 		$('#i_hora_desde, #i_hora_hasta').caracteres('0123456789:amp');
@@ -98,7 +98,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="i_cupos">Cupos Disponibles</label>
-						<input type="text" class="form-control" id="i_cupos" name="i_cupos" placeholder="99" maxlength="2">
+						<input type="text" class="form-control popover-msj" id="i_cupos" name="i_cupos" placeholder="99" maxlength="2" data-container="body" data-toggle="popover" data-placement="right" data-content="Indique la cantidad de cupos">
 					</div>          
 					<div class="form-group bootstrap-timepicker col-md-6">
 						<label for="i_hora_desde">Hora de Inicio</label>
@@ -110,7 +110,7 @@
 					</div>
 					<div class="form-group">
 						<label for="i_costo_consulta">Costo de la Consulta</label>
-						<input type="text" class="form-control" id="i_costo_consulta" name="i_costo_consulta" placeholder="999999" maxlength="6">
+						<input type="text" class="form-control popover-msj" id="i_costo_consulta po" name="i_costo_consulta" placeholder="999999" maxlength="6" data-container="body" data-toggle="popover" data-placement="left" data-content="Indique el costo de la consulta">
 					</div>          
 					<div class="box-footer">
 						<button type="button" id="b_enviar" class="btn btn-primary">Registrar</button>
