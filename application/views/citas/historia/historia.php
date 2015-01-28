@@ -42,45 +42,31 @@
 		<div class="col-xs-12">
 			<p align="center"><b>Pacientes</b></p>
 			<div class="box">				
-				<div class="box-body table-responsive no-padding">
-					<table class="table table-hover">
-						<tr>
-							<th width="5%">#</th>
-							<th width="30%">Paciente</th>
-							<th width="40%">Consultorio</th>
-							<th width="10%">Fecha</th>
-							<th width="15%">Acción</th>
-						</tr>
-						<?php
+				<div class="box-body" style="text-align: center;">
+					<div class="row">
+						<?php 
 							if(isset($pacientes) && !empty($pacientes)){
-								$i = 0;
 								foreach ($pacientes as $key) {
-									$i++; 
-									echo 
-									'<tr>
-										<td>'.$i.'</td>
-										<td>'.ucwords($key->nombre_paciente).'</td>
-										<td>'.ucfirst($key->nombre_consultorio).'</td>
-										<td>'.str_replace('-', '/', $key->fecha_horario).'</td>
-										<td>
-											<a href="'.base_url().'citas/historia/paciente-'.base64_encode($key->cedula_perfil).'">
-												<span class="btn btn-sm btn-info">
-												<i class="fa fa-edit"></i> Atender</span>
+									echo
+									'<div class="col-md-3">
+										<ul class="list-group">                 
+											<li class="list-group-item" align="center">
+												<a href="'.base_url().'citas/historia/paciente-'.base64_encode($key->cedula_perfil).'" class="btn-sm btn-default">'.ucwords($key->nombre_paciente).'</a>
+											</li>
+											<a href="'.base_url().'citas/historia/paciente-'.base64_encode($key->cedula_perfil).'" class="list-group-item" align="center" style="padding:0px;">
+												<img src="'.base_url().$key->url_imagen_perfil.'" width="100%" alt="'.mysql_to_utf8($key->nombre_paciente, 'titulo').'" class="img-responsive"/>
 											</a>
-										</td>
-									</tr>';
+											<li class="list-group-item" align="center">												
+												<a href="'.base_url().'citas/historia/paciente-'.base64_encode($key->cedula_perfil).'" class="btn-sm btn-success">Atender</a>
+											</li>
+										</ul>								
+									</div>';
 								}
-							}else{
-								echo
-								'<tr>
-									<th colspan="5">No se encontraron resultados.</th>
-								</tr>';
-							}
-						?>                   
-					</table>
+							} 
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<?php echo '<pre>'; print_r($pacientes); echo '</pre>'; ?>
 </section>

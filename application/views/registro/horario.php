@@ -1,14 +1,6 @@
 <script type="text/javascript">
 	$(function() {    
-		var temp = new Date();
-		var now  = new Date(temp.getFullYear(), temp.getMonth(), temp.getDate() + 1, 0, 0, 0, 0);
-		var chequeando = $('#i_fecha_consulta').datepicker({
-			format: 'dd/mm/yyyy',
-			language: 'es',
-			onRender: function(date) {
-				return date.valueOf() < now.valueOf() ? 'disabled' : '';
-			}
-		});
+		evento.mostrar('.mostrar');		
 		$('#listado').dataTable();
 		$("#s_consultorio, #s_especialidad, #s_dia_consulta").select2();
 		$('#i_costo_consulta').caracteres('0123456789');
@@ -19,7 +11,16 @@
 			showInputs: false,
 			showMeridian: false
 		});    
-		evento.mostrar('.mostrar');
+		var temp = new Date();
+		var now  = new Date(temp.getFullYear(), temp.getMonth(), temp.getDate() + 1, 0, 0, 0, 0);
+		var chequeando = $('#i_fecha_consulta').datepicker({
+			format: 'dd/mm/yyyy',
+			language: 'es',
+			onRender: function(date) {
+				return date.valueOf() < now.valueOf() ? 'disabled' : '';
+			}
+		});
+		
 
 		$('#b_enviar').click(function(event) { 
 			a = validar.logico('s_consultorio');
@@ -113,11 +114,11 @@
 						<input type="text" class="form-control popover-msj" id="i_costo_consulta po" name="i_costo_consulta" placeholder="999999" maxlength="6" data-container="body" data-toggle="popover" data-placement="left" data-content="Indique el costo de la consulta">
 					</div>          
 					<div class="box-footer">
-						<button type="button" id="b_enviar" class="btn btn-primary">Registrar</button>
-					</div>
-					<div class="btn-group col-md-push-3 mostrar">
-						<a href="<?php echo base_url();?>registro/horario" class="btn btn-primary">Registrar otro Horario</a>
-						<a href="<?php echo base_url();?>gestion/horario" class="btn btn-success">Gestionar Horario</a>
+						<button type="button" id="b_enviar" class="btn btn-primary">Registrar</button>					
+						<div class="btn-group mostrar">
+							<a href="<?php echo base_url();?>registro/horario" class="btn btn-primary">Registrar otro Horario</a>
+							<a href="<?php echo base_url();?>gestion/horario" class="btn btn-success">Gestionar Horario</a>
+						</div>
 					</div>               
 				</div>                
 			</form>

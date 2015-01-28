@@ -77,11 +77,11 @@
 					</div>                     
 					<div class="box-footer">
 						<button type="button" id="b_enviar" class="btn btn-primary">Registrar</button>
-					</div>
-					<div class="btn-group col-md-push-3 mostrar">
-						<a href="<?php echo base_url();?>registro/consultorio" class="btn btn-primary">Registrar otro Consultorio</a>
-						<a href="<?php echo base_url();?>gestion/consultorio" class="btn btn-success">Gestionar Consultorio</a>
-					</div>
+						<div class="btn-group mostrar">
+							<a href="<?php echo base_url();?>registro/consultorio" class="btn btn-primary">Registrar otro Consultorio</a>
+							<a href="<?php echo base_url();?>gestion/consultorio" class="btn btn-success">Gestionar Consultorio</a>
+						</div>
+					</div>					
 				</div>        
 			</form>
 			<div id="msj" class="panel-footer">

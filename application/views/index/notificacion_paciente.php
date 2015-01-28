@@ -13,7 +13,7 @@
 			<ul class="timeline">
 				<?php
 					foreach ($detalle_cita as $key) {
-						$detalle = $key->descripcion_detalle_rechazo_cita;
+						$detalle = (isset($key->descripcion_detalle_rechazo_cita)) ? $key->descripcion_detalle_rechazo_cita : '';
 						echo
 						'
 						<li class="time-label">

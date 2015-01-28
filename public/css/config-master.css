@@ -18,6 +18,7 @@
 	font-family: "lobster"; 
 	font-size: 18px;
 }
+
 .time-label div,h4{
     display: inline;
     margin: 10px 2px;
@@ -33,12 +34,6 @@
 }
 .box-action a{
     color: white;
-}
-.col-md-3{
-    width: 35%;
-}
-.col-md-9{
-    width: 65%;
 }
 .box-profile {
     text-align: center;

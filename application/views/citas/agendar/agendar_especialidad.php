@@ -57,23 +57,30 @@
                 <div class="box-header">
                     <div class="box-title" style="font-size: 14px;"><i class="fa fa-calendar"></i>&nbsp; Ultimos Horarios Publicados</div>
                 </div>
-                <div class="chat">
-                    <?php  
-                        if(isset($doctores) && !empty($doctores)){
-                            foreach ($doctores as $key) {
-                                echo
-                                '<div class="box-footer item">                
-                                    <img src="'.base_url().$key->url_imagen_perfil.'" alt="user image" class="online"/>
-                                    <p class="message">
-                                        <a href="'.base_url().'citas/perfil/doctor-'.base64_encode($key->id_usuario).'" class="name" style="margin-top: 10px;">
-                                          '.mysql_to_utf8($key->nombre_doctor, 'titulo').'
-                                        </a>
-                                    </p>
-                                </div>';
-                            }
-                        } 
-                    ?>         
-                </div>
+				<div class="box-footer">
+					<div class="row">
+						<?php 
+							if(isset($doctores) && !empty($doctores)){
+								foreach ($doctores as $key) {
+									echo
+									'<div class="col-md-4">
+										<ul class="list-group">                 
+											<li class="list-group-item" align="center">
+												<a href="'.base_url().'citas/perfil/doctor-'.base64_encode($key->id_usuario).'" class="btn-sm btn-default">'.mysql_to_utf8($key->nombre_doctor, 'titulo').'</a>
+											</li>
+											<a href="'.base_url().'citas/perfil/doctor-'.base64_encode($key->id_usuario).'" class="list-group-item" align="center" style="padding:0px;">
+												<img src="'.base_url().$key->url_imagen_perfil.'" width="100%" alt="'.mysql_to_utf8($key->nombre_doctor, 'titulo').'" class="img-responsive"/>
+											</a>
+											<li class="list-group-item" align="center">												
+												<a href="'.base_url().'citas/perfil/doctor-'.base64_encode($key->id_usuario).'" class="btn-sm btn-default">Visitas 44</a>
+											</li>
+										</ul>								
+									</div>';
+								}
+							} 
+						?>
+					</div>         
+				</div>
             </div>
         </div>
     </div>  

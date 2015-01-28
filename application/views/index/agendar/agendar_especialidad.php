@@ -8,7 +8,7 @@
 </section>
 <section class="content">  
 	<div class="row"> 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="box box-info">
 				<div class="box-header" style="text-align: center; padding-top: 10px;">
 					<div class="btn-group">
@@ -47,7 +47,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-8"> 
+		<div class="col-md-9"> 
 			<div class="box box-info" >
 				<div class="box-header">
 					<div class="box-title" style="font-size: 14px;"><i class="fa fa-stethoscope"></i>&nbsp; Doctores Disponibles</div>

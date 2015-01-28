@@ -93,74 +93,74 @@
 									}                  
 								?>    
 							</div>                                                
-						</div>              
-					</div>
-					<div class="col-md-9">
-						<!--<div class="row pad">
-							<div class="col-sm-6">
-								<div class="btn-group">
-									<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
-										Action <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Mark as read</a></li>
-										<li><a href="#">Mark as unread</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Move to junk</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Delete</a></li>
-									</ul>
+						</div>              				
+						<div class="col-md-9">
+							<!--<div class="row pad">
+								<div class="col-sm-6">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+											Action <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#">Mark as read</a></li>
+											<li><a href="#">Mark as unread</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Move to junk</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Delete</a></li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="col-sm-6 search-form">
-								<form action="#" class="text-right">
-									<div class="input-group">                                                            
-										<input type="text" class="form-control input-sm" placeholder="Search">
-										<div class="input-group-btn">
-											<button type="submit" name="q" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
-										</div>
-									</div>                                                     
-								</form>
-							</div>
-						</div>-->
-						<table class="table table-hover">
-							<tr>
-								<th width="5%">#</th>
-								<th width="25%">Consultorio</th>
-								<th width="20%">Especialidad</th>
-								<th width="15%">Fecha</th>
-								<th width="10%">Desde</th>
-								<th width="10%">Hasta</th>
-								<th width="5%">Costo</th>
-								<th width="10%">Acción</th>
-							</tr>
-							<?php                 
-								if($horarios){
-									$i = 0;
-									foreach ($horarios as $key) {
-										$i++; 
-										echo 
-										'<tr>
-											<td>'.$i.'</td>
-											<td>'.mysql_to_utf8($key->nombre_consultorio, 'titulo').'</td>
-											<td>'.mysql_to_utf8($key->especialidad, 'titulo').'</td>
-											<td>'.$key->fecha_horario.'</td>
-											<td>'.$key->desde_hora_horario.'</td>
-											<td>'.$key->hasta_hora_horario.'</td>
-											<td>'.$key->costo_horario.'</td>
-											<td>';
-											  if ($this->session->userdata('id_usuario')){
-												echo '<a href="'.base_url().'agendar/'.str_replace('_', '-', $url).'/horario-'.base64_encode($key->id_horario).'"><span class="btn btn-sm btn-success"><i class="fa fa-check"></i> Agendar</span></a>';
-											  }else{
-												echo '<a href="'.base_url().'sesion"><span class="btn btn-sm btn-info"><i class="fa fa-check"></i> Ingresar</span></a>';
-											  }
-											echo
-											'</td>
-										</tr>';
+								<div class="col-sm-6 search-form">
+									<form action="#" class="text-right">
+										<div class="input-group">                                                            
+											<input type="text" class="form-control input-sm" placeholder="Search">
+											<div class="input-group-btn">
+												<button type="submit" name="q" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+											</div>
+										</div>                                                     
+									</form>
+								</div>
+							</div>-->
+							<table class="table table-hover">
+								<tr>
+									<th width="5%">#</th>
+									<th width="25%">Consultorio</th>
+									<th width="20%">Especialidad</th>
+									<th width="15%">Fecha</th>
+									<th width="10%">Desde</th>
+									<th width="10%">Hasta</th>
+									<th width="5%">Costo</th>
+									<th width="10%">Acción</th>
+								</tr>
+								<?php                 
+									if($horarios){
+										$i = 0;
+										foreach ($horarios as $key) {
+											$i++; 
+											echo 
+											'<tr>
+												<td>'.$i.'</td>
+												<td>'.mysql_to_utf8($key->nombre_consultorio, 'titulo').'</td>
+												<td>'.mysql_to_utf8($key->especialidad, 'titulo').'</td>
+												<td>'.$key->fecha_horario.'</td>
+												<td>'.$key->desde_hora_horario.'</td>
+												<td>'.$key->hasta_hora_horario.'</td>
+												<td>'.$key->costo_horario.'</td>
+												<td>';
+												  if ($this->session->userdata('id_usuario')){
+													echo '<a href="'.base_url().'agendar/'.str_replace('_', '-', $url).'/horario-'.base64_encode($key->id_horario).'"><span class="btn btn-sm btn-success"><i class="fa fa-check"></i> Agendar</span></a>';
+												  }else{
+													echo '<a href="'.base_url().'sesion"><span class="btn btn-sm btn-info"><i class="fa fa-check"></i> Ingresar</span></a>';
+												  }
+												echo
+												'</td>
+											</tr>';
+										}
 									}
-								}
-							?>                   
-						</table>                                                
+								?>                   
+							</table>                                                
+						</div>
 					</div>
 				</div>
 			</div>

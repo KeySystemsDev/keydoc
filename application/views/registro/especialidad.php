@@ -54,11 +54,11 @@
 					</div>                             
 					<div class="box-footer">
 						<button type="button" id="b_enviar" class="btn btn-primary">Registrar</button>
-					</div>
-					<div class="btn-group col-md-push-3 mostrar">
-						<a href="<?php echo base_url();?>registro/especialidad" class="btn btn-primary">Registrar otra Especialidad</a>
-						<a href="<?php echo base_url();?>gestion/especialidad" class="btn btn-success">Gestionar Especialidades</a>
-					</div>
+						<div class="btn-group mostrar">
+							<a href="<?php echo base_url();?>registro/especialidad" class="btn btn-primary">Registrar otra Especialidad</a>
+							<a href="<?php echo base_url();?>gestion/especialidad" class="btn btn-success">Gestionar Especialidades</a>
+						</div>
+					</div>					
 				</div>
 			</form>
 		</div>  

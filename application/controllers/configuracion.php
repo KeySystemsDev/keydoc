@@ -23,7 +23,7 @@ class Configuracion extends CI_Controller{
 			*Consultamos el perfil del usuario
 			**/	
 			$perfil = array(
-				'id_usuario' 		=> $this->id_usuario,
+				'id_usuario'    => $this->id_usuario,
 				'id_aplicacion' => $this->id_aplicacion 
 			);
 			$this->datos_perfil   = $this->t_perfil_model->consultar_perfil($perfil);			
