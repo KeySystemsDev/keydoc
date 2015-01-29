@@ -56,7 +56,7 @@
 					                '<li class="time-label">
 					                    <div class="bg-aqua">
 					                        <h4 style="margin: 5px 10px;">
-					                        	<i class="fa fa-calendar-o"></i> &nbsp;'.$key->fecha_horario.'
+					                        	<i class="fa fa-calendar-o"></i> &nbsp;'.str_replace('-', '/', $key->fecha_horario).'
 					                        <h4>
 					                    </div>
 					                    ';
@@ -74,10 +74,10 @@
 											</div>';
 										}elseif ($key->asistencia_cita == 1) {
 											echo 	
-											'<div class="bg-teal box-action">
+											'<div class="bg-greenyellow box-action">
 												<h4 style="margin: 5px 10px;">
 													<i class="fa fa-pencil-square-o"></i>
-														<a href="">Ver Detalle</a>
+														<a href="">Asistió</a>
 												<h4>
 										 	</div>';
 										}elseif ($key->asistencia_cita == -1) {
@@ -95,7 +95,7 @@
 		               			 	<li>
 					                    <i class="fa fa-clock-o bg-yellow"></i>
 					                    <div class="timeline-item">
-		                        			<h3 class="timeline-header no-border"><a href="#">Hora: </a> '.$key->fecha_agenda_cita.' </h3>
+		                        			<h3 class="timeline-header no-border"><a href="#">Hora: </a> '.str_replace('-', '/', $key->fecha_agenda_cita).' </h3>
 		                    			</div>
 					                </li>
 					                <li>
@@ -109,13 +109,14 @@
 					                    <div class="timeline-item">
 					                        <div class="timeline-item" style="margin: 7px 5px;">
 						                        <h4> 
-						                        	<span class="label label-default bg-green">Costo Base: '.$key->costo_horario.'</span>
+						                        	<span class="label label-default bg-green">Costo Base: '.number_format($key->costo_horario, 2, ',', '.').'</span>
 													&nbsp;&nbsp;';
 													if ($key->asistencia_cita != 0) {		
+														$costo_total = $key->costo_horario + $key->costo_consulta_adicional;
 														echo
-														'<span class="label label-default bg-yellow">Costo Adicional: ...'.$key->costo_consulta_adicional.'</span>
+														'<span class="label label-default bg-yellow">Costo Adicional:'.number_format($key->costo_consulta_adicional, 2, ',', '.').'</span>
 														&nbsp;&nbsp;
-														<span class="label label-default bg-red">Costo Total: ...</span>';
+														<span class="label label-default bg-red">Costo Total: '.number_format($costo_total, 2, ',', '.').'</span>';
 													}
 												echo
 												'</h4>

@@ -4,15 +4,15 @@
 } 
 
 .bg-sesion{
-  background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+	background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 .mn-vertical{
-  font-size: 14px;
-  font-weight: bold;
+	font-size: 14px;
+	font-weight: bold;
 }
 .seccion{
 	font-family: "lobster"; 
@@ -20,35 +20,39 @@
 }
 
 .time-label div,h4{
-    display: inline;
-    margin: 10px 2px;
-    padding: 12px 3px;
-    text-align: center;
+	display: inline;
+	margin: 10px 2px;
+	padding: 12px 3px;
+	text-align: center;
 }
 .time-label div{
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	border-radius: 4px;
 }
 .timeline > li{
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .box-action a{
-    color: white;
+	color: white;
 }
 .box-profile {
-    text-align: center;
-    color:#666;
-    margin-bottom: 30px;
+	text-align: center;
+	color:#666;
+	margin-bottom: 30px;
 }
 .box-profile img{
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	border-radius: 50%;
 }
 .panel-row{
-    background: #fbfbfb;
-    border-radius: .25em;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	background: #fbfbfb;
+	border-radius: .25em;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.bg-greenyellow {
+	background: #32CD32;
+	color:#fff;
 }
