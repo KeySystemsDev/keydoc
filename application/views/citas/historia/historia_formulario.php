@@ -62,7 +62,7 @@
 			<input type="hidden" id="id_cita" name="id_cita" value="<?php echo $id_cita ?>">
 			<div class="form-group">
 				<label for="i_monto_base">Monto Base</label>
-				<input type="text" id="i_monto_base" class="form-control" name="i_monto_base" placeholder="Monto Base" value="<?php echo number_format($costo_horario, 2, ',', '.'); ?>" readonly>
+				<input type="text" id="i_monto_base" class="form-control" name="i_monto_base" placeholder="Monto Base" value="<?php echo number_format($costo_horario, 2, ',',''); ?>" readonly>
 			</div>
 			<div class="form-group">
 				<label for="i_monto_adicional">Monto Adicional</label>
@@ -84,8 +84,11 @@
 				<label id="msj">Mensajes del sistema</label>				
 			</div>
 
-			<button type="button" id="b_enviar">Registrar</button>
-			<button type="button" id="prueba">Prueba</button>
-		</form>	
+			<button class="btn btn-success" type="button" id="b_enviar"><i class="fa fa-pencil-square-o"></i> Registrar</button>
+
+		</form>
+		<br>	
 	</div>
 </section>
+
+
