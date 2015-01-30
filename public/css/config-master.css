@@ -1,7 +1,7 @@
 @font-face {
 	font-family: "lobster"; 
 	src: url(fonts/Lobster_1.3.ttf) format("truetype"); 
-} 
+}
 
 .bg-sesion{
 	background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
@@ -55,4 +55,12 @@
 .bg-greenyellow {
 	background: #32CD32;
 	color:#fff;
+}
+.logo-img{
+	width: 100px;
+	height: 35px;
+}
+
+.content-header{
+	font-family: 'Amaranth', sans-serif;
 }
