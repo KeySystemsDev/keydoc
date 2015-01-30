@@ -51,7 +51,13 @@
 	</ol>   
 </section>
 <section class="content">  
-	<div class="col-md-8">
+	<div class="col-md-8 col-xs-offset-2">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h3 class="box-title">Historia del Paciente</h3>
+			</div>
+
+		<div class="box-body">
 		<?php 
 			foreach ($historia as $key) {
 				$id_cita       = $key->id_cita;
@@ -80,15 +86,15 @@
 				<label for="i_observacion_privada">Observacion Privada</label>
 				<textarea class="form-control popover-msj" rows="5" id="i_observacion_privada" name="i_observacion_privada" placeholder="Observación Privada" maxlength="300" data-container="body" data-toggle="popover" data-placement="right" data-content="Esta observación la podrá ver solo Ud. Aquí puede ingresar lo necesario para llevar su control y recordar el tratamiento en una próxima oportunidad."></textarea>
 			</div>
-			<div class="form-group">
-				<label id="msj">Mensajes del sistema</label>				
-			</div>
+			
 
 			<button class="btn btn-success" type="button" id="b_enviar"><i class="fa fa-pencil-square-o"></i> Registrar</button>
 
 		</form>
-		<br>	
+		</div>
+		<div class="form-group panel-footer">
+				<label id="msj">Aquí aparecerán mensajes del sistema</label>				
+			</div>
+		</div>	
 	</div>
 </section>
-
-
