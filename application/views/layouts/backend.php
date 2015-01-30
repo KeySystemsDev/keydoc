@@ -70,7 +70,7 @@
 		<!-- header logo: style can be found in header.less -->
 		<header class="header">
 			<a href="<?php echo base_url()?>panel" class="logo">
-				Key-Doc
+				<img class="logo-img" src="./public/img/logo_keydoc.png">
 			</a>
 			<nav class="navbar navbar-static-top" role="navigation">
 				<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">

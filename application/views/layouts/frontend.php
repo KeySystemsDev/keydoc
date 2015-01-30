@@ -100,7 +100,7 @@
     <!-- header logo: style can be found in header.less -->
     <header class="header">
       <a href="<?php echo base_url()?>agendar" class="logo">
-        Key-Doc
+        <img class="logo-img" src="./public/img/logo_keydoc.png">
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
