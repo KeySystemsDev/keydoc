@@ -4,15 +4,15 @@
 } 
 
 .bg-sesion{
-  background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  	background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 }
 .mn-vertical{
-  font-size: 14px;
-  font-weight: bold;
+  	font-size: 14px;
+  	font-weight: bold;
 }
 .seccion{
 	font-family: "lobster"; 
