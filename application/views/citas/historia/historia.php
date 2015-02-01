@@ -62,7 +62,16 @@
 										</ul>								
 									</div>';
 								}
-							} 
+							}else{
+								echo 
+								'
+								<div class="alert alert-danger" style="margin-right:15px; margin-bottom:0px;">
+                                    <b><i class="fa fa-user-md"></i> En estos momentos no posee ningún paciente.</b>
+                                </div>
+								'
+								;
+							}
+
 						?>
 					</div>
 				</div>

@@ -30,6 +30,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/select2/select2.css"/>    
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/config-tooltip.css"/> 
 
+    <!-- FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
+
     <!-- JS INDIVIDUALES -->
     <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery.tooltip.js"></script>
@@ -100,7 +103,7 @@
     <!-- header logo: style can be found in header.less -->
     <header class="header">
       <a href="<?php echo base_url()?>agendar" class="logo">
-        Key-Doc
+        <img class="logo-img" src="<?php echo base_url()?>/public/img/logo_keydoc.png">
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">

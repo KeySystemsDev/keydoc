@@ -51,7 +51,13 @@
 	</ol>   
 </section>
 <section class="content">  
-	<div class="col-md-8">
+	<div class="col-md-8 col-xs-offset-2">
+		<div class="box box-primary">
+			<div class="box-header">
+				<h3 class="box-title">Historia del Paciente</h3>
+			</div>
+
+		<div class="box-body">
 		<?php 
 			foreach ($historia as $key) {
 				$id_cita       = $key->id_cita;
@@ -62,7 +68,7 @@
 			<input type="hidden" id="id_cita" name="id_cita" value="<?php echo $id_cita ?>">
 			<div class="form-group">
 				<label for="i_monto_base">Monto Base</label>
-				<input type="text" id="i_monto_base" class="form-control" name="i_monto_base" placeholder="Monto Base" value="<?php echo number_format($costo_horario, 2, ',', '.'); ?>" readonly>
+				<input type="text" id="i_monto_base" class="form-control" name="i_monto_base" placeholder="Monto Base" value="<?php echo number_format($costo_horario, 2, ',',''); ?>" readonly>
 			</div>
 			<div class="form-group">
 				<label for="i_monto_adicional">Monto Adicional</label>
@@ -80,12 +86,15 @@
 				<label for="i_observacion_privada">Observacion Privada</label>
 				<textarea class="form-control popover-msj" rows="5" id="i_observacion_privada" name="i_observacion_privada" placeholder="Observación Privada" maxlength="300" data-container="body" data-toggle="popover" data-placement="right" data-content="Esta observación la podrá ver solo Ud. Aquí puede ingresar lo necesario para llevar su control y recordar el tratamiento en una próxima oportunidad."></textarea>
 			</div>
-			<div class="form-group">
-				<label id="msj">Mensajes del sistema</label>				
-			</div>
+			
 
-			<button type="button" id="b_enviar">Registrar</button>
-			<button type="button" id="prueba">Prueba</button>
-		</form>	
+			<button class="btn btn-success" type="button" id="b_enviar"><i class="fa fa-pencil-square-o"></i> Registrar</button>
+
+		</form>
+		</div>
+		<div class="form-group panel-footer">
+				<label id="msj">Aquí aparecerán mensajes del sistema</label>				
+			</div>
+		</div>	
 	</div>
 </section>
