@@ -897,3 +897,6 @@ body {
     position: absolute;
     width: 250px;
 }
+.modal-margin{
+    margin-top: -100px;
+}
