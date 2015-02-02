@@ -58,11 +58,8 @@
 							<i class="fa fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_paciente.png" class="img-responsive" alt="">
+					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_paciente.jpg" class="img-responsive" alt="">
 				</a>
-				<div class="portfolio-caption">
-					<p class="text-muted">Para el Paciente</p>
-				</div>
 			</div>
 			<div class="col-md-4 col-sm-6 portfolio-item">
 				<a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
@@ -71,11 +68,8 @@
 							<i class="fa fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor.png" class="img-responsive" alt="">
+					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor.jpg" class="img-responsive" alt="">
 				</a>
-				<div class="portfolio-caption">
-					<p class="text-muted">Para el Médico</p>
-				</div>
 			</div>
 			<div class="col-md-4 col-sm-6 portfolio-item">
 				<a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
@@ -84,11 +78,8 @@
 							<i class="fa fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.png" class="img-responsive" alt="">
+					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.jpg" class="img-responsive" alt="">
 				</a>
-				<div class="portfolio-caption">
-					<p class="text-muted">Para la Recepcionista</p>
-				</div>
 			</div>                
 		</div>
 	</div>
@@ -345,7 +336,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="modal-body">
 						<h2>Paciente</h2>
-						<img class="img-responsive" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_paciente.png" alt="">
+						<img class="img-responsive" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_paciente_1.jpg" alt="">
 						<!--<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
 						<p>
 							<strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
@@ -375,7 +366,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="modal-body">
 						<h2>Médico</h2>						
-						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor.png" alt="">
+						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composision_doctor_1.jpg" alt="">
 						<!--<p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder for professionals. Startup Framework contains components and complex blocks (PSD+HTML Bootstrap themes and templates) which can easily be integrated into almost any design. All of these components are made in the same style, and can easily be integrated into projects, allowing you to create hundreds of solutions for your future projects.</p>
 						<p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.</p>-->
 						<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
@@ -399,7 +390,7 @@
 				<div class="col-lg-8 col-lg-offset-2">
 					<div class="modal-body">
 						<h2>Recepción</h2>
-						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.png" alt="">
+						<img class="img-responsive img-centered" src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion_1.jpg" alt="">
 						<!--<p>Treehouse is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and spacious design perfect for people or startup companies looking to showcase their apps or other projects.</p>
 						<p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.</p>-->
 						<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
