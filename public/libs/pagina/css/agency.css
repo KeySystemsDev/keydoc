@@ -179,6 +179,11 @@ fieldset[disabled] .btn-xl.active {
     color: #EC1A59;
 }
 
+.navbar-default .navbar-brand .intro-logo{
+    width: 120px;
+    margin-top: -10px;
+}
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
@@ -275,8 +280,26 @@ header {
 }
 
 header .intro-text {
-    padding-top: 100px;
+    padding-top: 80px;
     padding-bottom: 50px;
+}
+
+header .intro-text .intro-logo-banner{
+    width: 280px;
+    height: 280px;
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+header .intro-text .intro-logo-banner:hover{ 
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 header .intro-text .intro-lead-in {
@@ -298,7 +321,7 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 300px;
+        /*padding-top: 300px;*/
         padding-bottom: 200px;
     }
 
