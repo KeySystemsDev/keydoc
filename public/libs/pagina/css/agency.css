@@ -127,6 +127,7 @@ fieldset[disabled] .btn-primary.active {
     font-weight: 700;
     color: #fff;
     background-color: #EC1A59;
+    position: relative;
 }
 
 .btn-xl:hover,
@@ -292,6 +293,7 @@ header .intro-text .intro-logo-banner{
     -o-transition: all 0.7s ease;
     -ms-transition: all 0.7s ease;
     transition: all 0.7s ease;
+    position: relative;
 }
 
 header .intro-text .intro-logo-banner:hover{ 
@@ -885,4 +887,12 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #EC1A59;
+}
+#id-canvas{
+    background-color: transparent;
+    position: absolute;
+}
+#canvas{
+    position: absolute;
+    width: 250px;
 }

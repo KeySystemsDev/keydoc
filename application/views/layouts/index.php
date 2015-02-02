@@ -68,7 +68,9 @@
 				</div>
 		  	</div>
 		</nav>	
-		
+		<div id="canvas">
+			<canvas id="id-canvas"></canvas>
+		</div>
 		<?php echo $content_for_layout;?> 
 	</body>
 
@@ -87,4 +89,5 @@
 
   	<!-- Custom Theme JavaScript -->
   	<script src="<?php echo base_url()?>public/libs/pagina/js/agency.js"></script>
+  	<script src="<?php echo base_url()?>public/libs/pagina/js/canvas.js"></script>
 </html>

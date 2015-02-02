@@ -2,10 +2,27 @@
 	<div class="container">
 		<div class="intro-text">
 			<br></br>
-			<img class="intro-logo-banner" src="<?php echo base_url()?>/public/img/logo_key_corazon.png">
+			<style>
+				#latido{
+					-webkit-animation:4s latido infinite;
+				}
+				@-webkit-keyframes latido{
+					0%{transform:scale(1)}
+					47%{transform:scale(1)}
+					48%{transform:scale(.9)}
+					50%{transform:scale(1.1)}
+					52%{transform:scale(.9)}
+					54%{transform:scale(1)}
+				}
+			</style>
+			
+			<div id="latido">
+				<img class="intro-logo-banner" src="<?php echo base_url()?>/public/img/logo_key_corazon.png">
+			</div>
 			<br></br><br></br>
 			<div class="intro-lead-in">Bienvenido a una nueva era de los médicos!</div>
 			<a href="<?php base_url()?>agendar" class="page-scroll btn btn-xl">Comenzar</a>
+			
 		</div>
 	</div>
 </header>
