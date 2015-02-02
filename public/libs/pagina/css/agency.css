@@ -389,13 +389,14 @@ section h3.section-subheading {
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
     position: absolute;
-    width: 100%;
+    margin: 0px 15%;
+    width: 68%;
     height: 100%;
     opacity: 0;
-    background: transparent;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -o-border-radius: 10px;
+    background: #6DD9F2;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;

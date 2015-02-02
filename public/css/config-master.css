@@ -4,7 +4,6 @@
 }
 
 .bg-sesion{
-<<<<<<< HEAD
   	background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
@@ -14,7 +13,6 @@
 .mn-vertical{
   	font-size: 14px;
   	font-weight: bold;
-=======
 	background: url(../img/sesion/bg-sesion.jpg) no-repeat fixed center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -24,7 +22,6 @@
 .mn-vertical{
 	font-size: 14px;
 	font-weight: bold;
->>>>>>> 8fd3ecccec820ed39eea4559ec0e43be60c3c9bb
 }
 .seccion{
 	font-family: "lobster"; 

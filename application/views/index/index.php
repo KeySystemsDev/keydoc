@@ -1,21 +1,20 @@
+<style>
+	#latido{
+		-webkit-animation:4s latido infinite;
+	}
+	@-webkit-keyframes latido{
+		0%{transform:scale(1)}
+		47%{transform:scale(1)}
+		48%{transform:scale(.9)}
+		50%{transform:scale(1.1)}
+		52%{transform:scale(.9)}
+		54%{transform:scale(1)}
+	}
+</style>
 <header>
 	<div class="container">
 		<div class="intro-text">
-			<br></br>
-			<style>
-				#latido{
-					-webkit-animation:4s latido infinite;
-				}
-				@-webkit-keyframes latido{
-					0%{transform:scale(1)}
-					47%{transform:scale(1)}
-					48%{transform:scale(.9)}
-					50%{transform:scale(1.1)}
-					52%{transform:scale(.9)}
-					54%{transform:scale(1)}
-				}
-			</style>
-			
+			<br></br>			
 			<div id="latido">
 				<img class="intro-logo-banner" src="<?php echo base_url()?>/public/img/logo_key_corazon.png">
 			</div>
@@ -96,7 +95,7 @@
 					<div class="portfolio-hover">
 						<div class="portfolio-hover-content">
 							<i class="fa fa-plus fa-3x"></i>
-						</div>
+						</div>						
 					</div>
 					<img src="<?php echo base_url()?>public/libs/pagina/img/portfolio/composicion_recepcion.jpg" class="img-responsive" alt="">
 				</a>
