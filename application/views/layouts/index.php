@@ -40,12 +40,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 				  	</button>
-				  	<a class="navbar-brand page-scroll" href="#page-top">Key Doc</a>
+				  	<a class="navbar-brand page-scroll" href="#page-top">
+				  		<img class="intro-logo" src="<?php echo base_url()?>/public/img/logo_keydoc.png">
+				  	</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				  	<ul class="nav navbar-nav navbar-right">
 						<li class="page-scroll">
-						  	<a href="#page-top"> Comenzar</a>
+						  	<a href="#page-top"> Inicio</a>
 						</li>
 						<li>
 						  	<a class="page-scroll" href="#services">Dirigido</a>

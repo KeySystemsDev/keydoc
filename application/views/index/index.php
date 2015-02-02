@@ -1,6 +1,9 @@
 <header>
 	<div class="container">
 		<div class="intro-text">
+			<br></br>
+			<img class="intro-logo-banner" src="<?php echo base_url()?>/public/img/logo_key_corazon.png">
+			<br></br><br></br>
 			<div class="intro-lead-in">Bienvenido a una nueva era de los médicos!</div>
 			<a href="<?php base_url()?>agendar" class="page-scroll btn btn-xl">Comenzar</a>
 		</div>
