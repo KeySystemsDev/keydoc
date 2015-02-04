@@ -64,5 +64,9 @@ class Mail extends CI_Controller{
 
 	public function restaurar(){
 		$this->layout->view('restaurar_password');
-	}		
+	}
+
+	public function carnet_enviado(){
+		$this->layout->view('carnet_enviado');
+	}			
 }

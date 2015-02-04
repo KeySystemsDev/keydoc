@@ -6,22 +6,22 @@ class Index extends CI_Controller{
 		parent::__construct();
 		if($this->session->userdata('id_usuario')){
 			$this->id_aplicacion = $this->session->userdata('id_aplicacion');
-			$this->id_grupo 	 = $this->session->userdata('id_grupo');
-			$this->id_usuario	 = $this->session->userdata('id_usuario');
+			$this->id_grupo      = $this->session->userdata('id_grupo');
+			$this->id_usuario    = $this->session->userdata('id_usuario');
 			if($this->id_grupo == 2){
-				$paciente = array('id_usuario_paciente' => $this->id_usuario );
+				$paciente                    = array('id_usuario_paciente' => $this->id_usuario );
 				$this->notificacion_paciente = $this->t_cita_model->consulta_notificacion_paciente($paciente);				
 			}else{
-				$doctor = array( 'id_usuario_doctor' => $this->id_usuario );
+				$doctor                      = array( 'id_usuario_doctor' => $this->id_usuario );
 				$this->notificacion_doctor   = $this->t_cita_model->consulta_notificacion_doctor($doctor);
-				$paciente = array('id_usuario_paciente' => $this->id_usuario );
+				$paciente                    = array('id_usuario_paciente' => $this->id_usuario );
 				$this->notificacion_paciente = $this->t_cita_model->consulta_notificacion_paciente($paciente);
 			}
 			/**
 			*Consultamos el perfil del usuario
 			**/	
 			$perfil = array(
-				'id_usuario' 		=> $this->id_usuario,
+				'id_usuario'    => $this->id_usuario,
 				'id_aplicacion' => $this->id_aplicacion 
 			);
 			$this->datos_perfil   = $this->t_perfil_model->consultar_perfil($perfil);			
@@ -62,8 +62,8 @@ class Index extends CI_Controller{
 			$this->url = $_SERVER['REQUEST_URI'];
 			$this->str = explode('/', $this->url);
 			
-			$this->num = 3;  // localhost
-			//$this->num = 1;  // server
+			//$this->num = 3;  // localhost
+			$this->num = 1;  // server
 		
 			if ($this->str[$this->num]) {
 				if($this->str[$this->num] == 'agendar'
@@ -97,8 +97,26 @@ class Index extends CI_Controller{
 			'id_usuario_doctor'   => decodificar($id_doctor),
 			'id_horario'          => decodificar($id_horario),			
 			'id_usuario_paciente' => $this->id_usuario,
-		);
+		);		
 		$cita_actual = $this->t_cita_model->agregar_cita($arreglo);
+		/**
+		* Enviando Correo electronico del carnet enviado
+		**/
+		$this->email->clear();
+		$this->email->set_mailtype("html");
+		$this->email->from('soporte@keydoc.com.ve', 'Asistencia Key Doc');
+		$this->email->to($this->input->post('i_usuario')); 
+		$this->email->bcc('diego.carciente@gmail.com'); 
+		$this->email->subject('Notificación - Key Doc');
+		$mensaje = 'Su cita ha sido enviada al doctor seleccionado exitosamente, le notificaremos por medio del correo electrónico y a través de la página cuando el doctor de respuesta de su solicitud.
+					<br> Saludos y que tenga un excelente día.';
+		$correo  = $this->input->post('i_usuario');
+		$cuerpo  = notificacion(
+			$correo,
+			$mensaje
+		);
+		$this->email->message($cuerpo);	
+		$this->email->send();		
 		foreach ($cita_actual as $key) {
 			/**
 			*	Se verifica que el usuario no haya agendado anteriormente
@@ -156,6 +174,24 @@ class Index extends CI_Controller{
 				* Se verifica que el usuario no haya agendado anteriormente
 				**/
 				if (isset($key->doctor)) {
+					/**
+					* Enviando Correo electronico del carnet enviado
+					**/
+					$this->email->clear();
+					$this->email->set_mailtype("html");
+					$this->email->from('soporte@keydoc.com.ve', 'Asistencia Key Doc');
+					$this->email->to($this->input->post('i_usuario')); 
+					$this->email->bcc('diego.carciente@gmail.com'); 
+					$this->email->subject('Notificación - Key Doc');
+					$mensaje = 'Su cita ha sido enviada al doctor seleccionado exitosamente, le notificaremos por medio del correo electrónico y a través de la página cuando el doctor de respuesta de su solicitud.
+								<br> Saludos y que tenga un excelente día.';
+					$correo  = $this->input->post('i_usuario');
+					$cuerpo  = notificacion(
+						$correo,
+						$mensaje
+					);
+					$this->email->message($cuerpo);	
+					$this->email->send();						
 					$this->layout->view('agendar/agendar_mensaje_envio', compact('arreglo'));
 				} else {
 					$this->layout->view('agendar/agendar_mensaje_cita_error', compact('arreglo'));
@@ -245,16 +281,16 @@ class Index extends CI_Controller{
 		} else {
 			/**
 			* Inicio del proceso, donde el usuario seleccionara la especialidad
-			**/
-			$arreglo = array(
+		**/
+			$arreglo               = array(
 				'id_usuario_doctor'    => '',
 				'id_tipo_estado'       => '',
 				'id_tipo_especialidad' => '',
 				'id_tipo_municipio'    => '',
 				'id_usuario'           => '', 
 			);
-			$especialidades = $this->t_cita_model->consulta_especialidades_existentes($arreglo);
-			$doctores       = $this->t_horario_model->consulta_doctores_por_filtros($arreglo);
+			$especialidades        = $this->t_cita_model->consulta_especialidades_existentes($arreglo);
+			$doctores              = $this->t_horario_model->consulta_doctores_por_filtros($arreglo);
 			$this->layout->view('agendar/agendar_especialidad', compact('especialidades', 'doctores'));
 		}
 	}
@@ -281,8 +317,27 @@ class Index extends CI_Controller{
 			'id_usuario'  => $this->id_usuario,
 			'carnet'      => $this->input->post("i_carnet"),
 		);			
-		$carnet  = $this->t_documentos_doctor_model->insertar_carnet($arreglo);		
-		$this->layout->view('carnet_enviado');
+		$carnet  = $this->t_documentos_doctor_model->insertar_carnet($arreglo);	
+		/**
+		* Enviando Correo electronico del carnet enviado
+		**/
+		$this->email->clear();
+		$this->email->set_mailtype("html");
+		$this->email->from('soporte@keydoc.com.ve', 'Asistencia Key Doc');
+		$this->email->to($this->input->post('i_usuario')); 
+		$this->email->bcc('diego.carciente@gmail.com'); 
+		$this->email->subject('Notificación - Key Doc');
+		$mensaje = 'Hemos recibido el número de carnet, en las próximas 24 a 48 horas hábiles recibira un correo o una llamada de nuestro equipo para verificar sus datos. 
+					<br> Saludo y que tenga un Feliz Día.';
+		$correo  = $this->input->post('i_usuario');
+		$cuerpo  = notificacion(
+			$correo,
+			$mensaje
+		);
+		$this->email->message($cuerpo);	
+		$this->email->send();		  	
+
+		redirect(base_url().'mail/carnet-enviado', 'refresh');
 	}
 
 	public function perfil(){
@@ -311,14 +366,14 @@ class Index extends CI_Controller{
 		**/
 		if ($this->input->post()){
 			$arreglo = array(
-				'nombre' 			=> $this->input->post("i_nombre"),
-				'apellido' 			=> $this->input->post("i_apellido"),
-				'cedula' 			=> $this->input->post("i_cedula"),
-				'telefono' 			=> $this->input->post("i_telefono"),	
-				'fecha_nacimiento' 	=> $this->input->post("i_fecha_nacimiento"),
-				'direccion' 		=> $this->input->post("i_direccion"),						
-				'id_usuario' 		=> $this->input->post("id_usuario"),
-				'sexo_perfil'    	=> $this->input->post("i_sexo"),
+				'nombre'            => $this->input->post("i_nombre"),
+				'apellido'          => $this->input->post("i_apellido"),
+				'cedula'            => $this->input->post("i_cedula"),
+				'telefono'          => $this->input->post("i_telefono"),	
+				'fecha_nacimiento'  => $this->input->post("i_fecha_nacimiento"),
+				'direccion'         => $this->input->post("i_direccion"),						
+				'id_usuario'        => $this->input->post("id_usuario"),
+				'sexo_perfil'       => $this->input->post("i_sexo"),
 				'portal_web_perfil' => ($this->input->post("i_portal_web")) ? $this->input->post("i_portal_web") : '',
 				'id_aplicacion'     => $this->id_aplicacion
 			);

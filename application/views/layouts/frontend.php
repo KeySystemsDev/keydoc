@@ -70,7 +70,7 @@
         
         $('#b_carnet').click(function(event) { 
           a = validar.texto('i_carnet');     
-          if(a != 0){               
+          if(a != 0 || a == '99999'){               
             datos = $('#form_carnet').submit();
           }
         });
@@ -191,7 +191,8 @@
                             <form id="form_carnet" method="post" action="<?php echo base_url().'ingresar-carnet'?>">
                               <div class="body">
                                 <br>
-                                <p>Con el carnet podremos certificarlo y activarle la administración del sistema <b>Key Doc</b></p>
+                                <p>Si eres estudiante ingresa 9999, luego recibirá un correo solicitando cierta información.
+                                </p>
                                 <div class="form-group">
                                   <input type="text" id="i_carnet" name="i_carnet" class="form-control" placeholder="Ingrese su Carnet">
                                 </div>                                                    

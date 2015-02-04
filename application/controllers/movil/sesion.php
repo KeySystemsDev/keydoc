@@ -10,8 +10,8 @@ class Sesion extends CI_Controller{
 	 }
 
 	function conectar(){
-		$usuario 	= filter_input(INPUT_POST,'i_usuario',FILTER_SANITIZE_STRING);
-		$password	= filter_input(INPUT_POST,'i_password',FILTER_SANITIZE_STRING);
+		$usuario 	= $_GET['i_usuario'];
+		$password	= $_GET['i_password'];
 
 		$resultado 	= $this->permisologia_model->getUsuario($usuario, $password);
 		echo json_encode($resultado);	

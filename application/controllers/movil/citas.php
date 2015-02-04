@@ -19,7 +19,10 @@ class Citas extends CI_Controller{
 
 	public function especialidades(){
 
-		$resultado_especialidades = $this->t_cita_model->consulta_especialidades_existentes();
+		$arreglo = array(
+			'id_usuario_doctor' => 5,					
+		);
+		$resultado_especialidades = $this->t_cita_model->consulta_especialidades_existentes($arreglo);
 		echo json_encode($resultado_especialidades);	
 	}		
 
