@@ -516,8 +516,7 @@ class Index extends CI_Controller{
 		);			
 		$leido        = $this->t_cita_model->notificacion_leida_paciente($arreglo);
 		$detalle_cita = $this->t_cita_model->consulta_detalle_notificacion($arreglo);			
-		$this->layout->view('notificacion_paciente', compact('detalle_cita'));
-			
+		$this->layout->view('notificacion_paciente', compact('detalle_cita'));			
 	}
 
 	public function amistad($id_usuario){	
